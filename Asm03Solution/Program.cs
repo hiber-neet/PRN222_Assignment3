@@ -1,4 +1,6 @@
 using Asm03Solution.Components;
+using BusinessObject.Services;
+using BusinessObject.Services.Instance;
 using DataAccess;
 using DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -30,6 +32,9 @@ namespace Asm03Solution
             // Register Repositories and Unit of Work
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            
+            // Register Services
+            builder.Services.AddScoped<IMemberService, MemberService>();
             
             var app = builder.Build();
 
