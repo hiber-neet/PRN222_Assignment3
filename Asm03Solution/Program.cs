@@ -1,6 +1,8 @@
 using Asm03Solution.Components;
 using DataAccess;
+using DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 namespace Asm03Solution
 {
@@ -13,8 +15,22 @@ namespace Asm03Solution
             // Add services to the container.
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
+                
+            // Add controllers
+            builder.Services.AddControllers();
+            
+            // Enable Swagger/OpenAPI
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+                
+            // Register DbContext
             builder.Services.AddDbContext<ECommerceContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+                
+            // Register Repositories and Unit of Work
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -24,11 +40,19 @@ namespace Asm03Solution
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            else
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
 
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();
             app.UseAntiforgery();
+            
+            // Map controllers
+            app.MapControllers();
 
             app.MapRazorComponents<App>()
                 .AddInteractiveServerRenderMode();

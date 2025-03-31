@@ -1,54 +1,66 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\",
+  "WorkspaceRootPath": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|c:\\users\\administrator\\desktop\\asm03solution\\dataaccess\\dataaccess.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\dataaccess.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\asm03solution\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|c:\\users\\administrator\\desktop\\asm03solution\\dataaccess\\ecommercecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\ecommercecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F94ED49-6BF5-4BA4-B015-4C1912B7E30E}|BusinessObject\\BusinessObject.csproj|c:\\users\\administrator\\desktop\\asm03solution\\businessobject\\businessobject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{7F94ED49-6BF5-4BA4-B015-4C1912B7E30E}|BusinessObject\\BusinessObject.csproj|solutionrelative:businessobject\\businessobject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|c:\\users\\administrator\\desktop\\asm03solution\\asm03solution\\asm03solution.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\asm03solution.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|c:\\users\\administrator\\desktop\\asm03solution\\dataaccess\\models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|c:\\users\\administrator\\desktop\\asm03solution\\dataaccess\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\dataaccess\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|c:\\users\\administrator\\desktop\\asm03solution\\dataaccess\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\dataaccess\\ecommercecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\ecommercecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|c:\\users\\administrator\\desktop\\asm03solution\\dataaccess\\models\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\models\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\dataaccess\\repositories\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repositories\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|c:\\users\\administrator\\desktop\\asm03solution\\asm03solution\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\dataaccess\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|c:\\users\\administrator\\desktop\\asm03solution\\asm03solution\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F94ED49-6BF5-4BA4-B015-4C1912B7E30E}|BusinessObject\\BusinessObject.csproj|c:\\users\\administrator\\desktop\\asm03solution\\businessobject\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7F94ED49-6BF5-4BA4-B015-4C1912B7E30E}|BusinessObject\\BusinessObject.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\businessobject\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7F94ED49-6BF5-4BA4-B015-4C1912B7E30E}|BusinessObject\\BusinessObject.csproj|solutionrelative:businessobject\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|c:\\users\\administrator\\desktop\\asm03solution\\dataaccess\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7F94ED49-6BF5-4BA4-B015-4C1912B7E30E}|BusinessObject\\BusinessObject.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\businessobject\\businessobject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{7F94ED49-6BF5-4BA4-B015-4C1912B7E30E}|BusinessObject\\BusinessObject.csproj|solutionrelative:businessobject\\businessobject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\dataaccess\\models\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\models\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\dataaccess\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\dataaccess\\dataaccess.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\dataaccess.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\asm03solution\\asm03solution.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\asm03solution.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\dataaccess\\models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\dataaccess\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\asm03solution\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\asm03solution\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,67 +70,74 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DataAccess",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\DataAccess.csproj",
-              "RelativeDocumentMoniker": "DataAccess\\DataAccess.csproj",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\DataAccess.csproj",
-              "RelativeToolTip": "DataAccess\\DataAccess.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAnwBQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-03-31T14:14:05.445Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "BusinessObject",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\BusinessObject\\BusinessObject.csproj",
-              "RelativeDocumentMoniker": "BusinessObject\\BusinessObject.csproj",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\BusinessObject\\BusinessObject.csproj",
-              "RelativeToolTip": "BusinessObject\\BusinessObject.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-03-31T14:14:03.485Z",
+              "DocumentIndex": 0,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "Asm03Solution\\Controllers\\CategoryController.cs",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "Asm03Solution\\Controllers\\CategoryController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T19:14:29.821Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Asm03Solution",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\Asm03Solution\\Asm03Solution.csproj",
-              "RelativeDocumentMoniker": "Asm03Solution\\Asm03Solution.csproj",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\Asm03Solution\\Asm03Solution.csproj",
-              "RelativeToolTip": "Asm03Solution\\Asm03Solution.csproj",
+              "Title": "IGenericRepository.cs",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\Repositories\\IGenericRepository.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Repositories\\IGenericRepository.cs",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\Repositories\\IGenericRepository.cs",
+              "RelativeToolTip": "DataAccess\\Repositories\\IGenericRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-03-31T14:13:49.395Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\Asm03Solution\\Program.cs",
-              "RelativeDocumentMoniker": "Asm03Solution\\Program.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\Asm03Solution\\Program.cs",
-              "RelativeToolTip": "Asm03Solution\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T18:41:27.698Z",
+              "WhenOpened": "2025-03-31T19:14:21.37Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\Repositories\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Repositories\\GenericRepository.cs",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\Repositories\\GenericRepository.cs",
+              "RelativeToolTip": "DataAccess\\Repositories\\GenericRepository.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T19:14:17.605Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ECommerceContext.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\ECommerceContext.cs",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\ECommerceContext.cs",
               "RelativeDocumentMoniker": "DataAccess\\ECommerceContext.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\ECommerceContext.cs",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\ECommerceContext.cs",
               "RelativeToolTip": "DataAccess\\ECommerceContext.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAQwBcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -129,35 +148,22 @@
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "Member.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\Models\\Member.cs",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\Models\\Member.cs",
               "RelativeDocumentMoniker": "DataAccess\\Models\\Member.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\Models\\Member.cs",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\Models\\Member.cs",
               "RelativeToolTip": "DataAccess\\Models\\Member.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAQwBEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAuwBEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-29T17:01:34.412Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Order.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\Models\\Order.cs",
-              "RelativeDocumentMoniker": "DataAccess\\Models\\Order.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\Models\\Order.cs",
-              "RelativeToolTip": "DataAccess\\Models\\Order.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAmwB4AAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T17:01:11.183Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "Product.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\Models\\Product.cs",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\Models\\Product.cs",
               "RelativeDocumentMoniker": "DataAccess\\Models\\Product.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\Models\\Product.cs",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\Models\\Product.cs",
               "RelativeToolTip": "DataAccess\\Models\\Product.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -166,37 +172,49 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "OrderDetail.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\Models\\OrderDetail.cs",
-              "RelativeDocumentMoniker": "DataAccess\\Models\\OrderDetail.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\Models\\OrderDetail.cs",
-              "RelativeToolTip": "DataAccess\\Models\\OrderDetail.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAIwBMAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T17:00:55.697Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\Asm03Solution\\appsettings.json",
-              "RelativeDocumentMoniker": "Asm03Solution\\appsettings.json",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\Asm03Solution\\appsettings.json",
-              "RelativeToolTip": "Asm03Solution\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-29T18:41:13.169Z",
+              "Title": "DataAccess.csproj",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\DataAccess.csproj",
+              "RelativeDocumentMoniker": "DataAccess\\DataAccess.csproj",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\DataAccess.csproj",
+              "RelativeToolTip": "DataAccess\\DataAccess.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAnwBQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-31T14:14:05.445Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
+              "Title": "Order.cs",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Models\\Order.cs",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\Models\\Order.cs",
+              "RelativeToolTip": "DataAccess\\Models\\Order.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAmwB4AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T17:01:11.183Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Category.cs",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Models\\Category.cs",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\Models\\Category.cs",
+              "RelativeToolTip": "DataAccess\\Models\\Category.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T17:00:21.884Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\BusinessObject\\Class1.cs",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\BusinessObject\\Class1.cs",
               "RelativeDocumentMoniker": "BusinessObject\\Class1.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\BusinessObject\\Class1.cs",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\BusinessObject\\Class1.cs",
               "RelativeToolTip": "BusinessObject\\Class1.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -205,16 +223,78 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Category.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\Models\\Category.cs",
-              "RelativeDocumentMoniker": "DataAccess\\Models\\Category.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\Models\\Category.cs",
-              "RelativeToolTip": "DataAccess\\Models\\Category.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAIBJwAwAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T17:00:21.884Z",
+              "DocumentIndex": 6,
+              "Title": "BusinessObject.csproj",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\BusinessObject\\BusinessObject.csproj",
+              "RelativeDocumentMoniker": "BusinessObject\\BusinessObject.csproj",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\BusinessObject\\BusinessObject.csproj",
+              "RelativeToolTip": "BusinessObject\\BusinessObject.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-31T14:14:03.485Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Program.cs",
+              "RelativeDocumentMoniker": "Asm03Solution\\Program.cs",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Program.cs",
+              "RelativeToolTip": "Asm03Solution\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T18:41:27.698Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Asm03Solution.csproj",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Asm03Solution.csproj",
+              "RelativeDocumentMoniker": "Asm03Solution\\Asm03Solution.csproj",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Asm03Solution.csproj",
+              "RelativeToolTip": "Asm03Solution\\Asm03Solution.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-31T14:13:49.395Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "OrderDetail.cs",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\Models\\OrderDetail.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Models\\OrderDetail.cs",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\Models\\OrderDetail.cs",
+              "RelativeToolTip": "DataAccess\\Models\\OrderDetail.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAIwBMAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T17:00:55.697Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\appsettings.json",
+              "RelativeDocumentMoniker": "Asm03Solution\\appsettings.json",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\appsettings.json",
+              "RelativeToolTip": "Asm03Solution\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-29T18:41:13.169Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 229,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             }
           ]
         }
