@@ -25,7 +25,18 @@ namespace DataAccess.Repositories
 
         public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> expression)
         {
-            return await _dbSet.Where(expression).ToListAsync();
+            try
+            {
+                return await _dbSet.Where(expression).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                // Log lỗi
+                Console.WriteLine($"Lỗi trong FindAsync: {ex.Message}");
+                
+                // Trả về danh sách trống thay vì throw exception để tránh crash ứng dụng
+                return new List<T>();
+            }
         }
 
         public async Task<T> GetByIdAsync(object id)

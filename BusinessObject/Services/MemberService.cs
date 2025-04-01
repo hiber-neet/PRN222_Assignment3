@@ -168,23 +168,37 @@ namespace BusinessObject.Services
         /// <returns>Member information if authentication succeeds, null otherwise</returns>
         public async Task<Member> AuthenticateAsync(string email, string password)
         {
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            try
             {
-                throw new ArgumentException("Email and password are required.");
-            }
+                // Nếu email hoặc password trống, trả về null
+                if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+                {
+                    return null;
+                }
 
-            // Find member by email
-            var members = await _unitOfWork.Members.FindAsync(m => m.Email.Equals(email));
-            var member = members.FirstOrDefault();
+                // Đầu tiên kiểm tra xem email có tồn tại không
+                var membersByEmail = await _unitOfWork.Members.FindAsync(m => m.Email.Equals(email));
+                var memberWithEmail = membersByEmail.FirstOrDefault();
 
-            // Check if member exists and password matches
-            if (member != null && member.Password.Equals(password))
-            {
+                if (memberWithEmail == null)
+                {
+                    // Email không tồn tại
+                    return null;
+                }
+
+                // Sau đó kiểm tra mật khẩu
+                var members = await _unitOfWork.Members.FindAsync(m => m.Email.Equals(email) && m.Password.Equals(password));
+                var member = members.FirstOrDefault();
+
+                // Nếu không tìm thấy, nghĩa là mật khẩu không khớp
                 return member;
             }
-
-            // Authentication failed
-            return null;
+            catch (Exception ex)
+            {
+                // Log lỗi
+                Console.WriteLine($"Authentication error: {ex.Message}");
+                return null;
+            }
         }
     }
 }

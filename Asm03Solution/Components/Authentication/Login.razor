@@ -1,0 +1,138 @@
+@page "/login"
+@using BusinessObject.Services.Instance
+@using DataAccess.Models
+@using Microsoft.AspNetCore.Components
+@using System.ComponentModel.DataAnnotations
+@inject IMemberService MemberService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Login</PageTitle>
+
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Login</h3>
+                </div>
+                <div class="card-body">
+                    <EditForm Model="@loginModel" OnValidSubmit="HandleLogin" FormName="login-form">
+                        <DataAnnotationsValidator />
+                        <ValidationSummary />
+
+                        <div class="form-group mb-3">
+                            <label for="email">Email</label>
+                            <InputText id="email" @bind-Value="loginModel.Email" class="form-control" />
+                            <ValidationMessage For="@(() => loginModel.Email)" />
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="password">Password</label>
+                            <InputText id="password" @bind-Value="loginModel.Password" class="form-control" type="password" />
+                            <ValidationMessage For="@(() => loginModel.Password)" />
+                        </div>
+
+                        @if (!string.IsNullOrEmpty(errorMessage))
+                        {
+                            <div class="alert alert-danger mt-3">
+                                @errorMessage
+                            </div>
+                        }
+
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary" disabled="@isLoading">
+                                @if (isLoading)
+                                {
+                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    <span class="ms-2">Đang đăng nhập...</span>
+                                }
+                                else
+                                {
+                                    <span>Đăng nhập</span>
+                                }
+                            </button>
+                        </div>
+                        
+                        <div class="text-center mt-3">
+                            <a href="/register">Chưa có tài khoản? Đăng ký</a>
+                        </div>
+                    </EditForm>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private LoginModel loginModel = new();
+    private string errorMessage = string.Empty;
+    private bool isLoading = false;
+    private bool isProcessing = false; 
+
+    private async Task HandleLogin()
+    {
+        // Ngăn xử lý nhiều lần khi nhấn nút nhiều lần
+        if (isProcessing) return;
+        
+        errorMessage = string.Empty;
+        isLoading = true;
+        isProcessing = true;
+
+        try
+        {
+            // Đảm bảo email và password không null
+            var email = loginModel.Email?.Trim() ?? string.Empty;
+            var password = loginModel.Password ?? string.Empty;
+
+            // Thêm một chút độ trễ để hiển thị loading spinner (tối thiểu 500ms)
+            await Task.Delay(500);
+
+            // Gọi API xác thực
+            var member = await MemberService.AuthenticateAsync(email, password);
+
+            if (member != null)
+            {
+                try
+                {
+                    // Lưu thông tin người dùng vào localStorage
+                    await JSRuntime.InvokeVoidAsync("localStorage.setItem", "currentUser", 
+                        System.Text.Json.JsonSerializer.Serialize(new { 
+                            Id = member.MemberId,
+                            Email = member.Email,
+                            CompanyName = member.CompanyName
+                        }));
+
+                    // Chuyển hướng đến trang Product
+                    NavigationManager.NavigateTo("/product", forceLoad: true);
+                }
+                catch (Exception jsEx)
+                {
+                    errorMessage = "Lỗi lưu thông tin đăng nhập: " + jsEx.Message;
+                }
+            }
+            else
+            {
+                errorMessage = "Email hoặc mật khẩu không đúng";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Đăng nhập thất bại: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+            isProcessing = false;
+        }
+    }
+
+    public class LoginModel
+    {
+        [Required(ErrorMessage = "Email là bắt buộc")]
+        public string Email { get; set; } = string.Empty;
+        
+        [Required(ErrorMessage = "Mật khẩu là bắt buộc")]
+        public string Password { get; set; } = string.Empty;
+    }
+} 
