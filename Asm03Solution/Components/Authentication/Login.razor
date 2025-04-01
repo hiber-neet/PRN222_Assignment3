@@ -1,4 +1,5 @@
 @page "/login"
+@using BusinessObject.RequestModel
 @using BusinessObject.Services.Instance
 @using DataAccess.Models
 @using Microsoft.AspNetCore.Components
@@ -7,55 +8,65 @@
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JSRuntime
 
-<PageTitle>Login</PageTitle>
+<PageTitle>Đăng nhập - Hệ thống quản lý</PageTitle>
 
-<div class="container">
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header bg-primary text-white">
-                    <h3 class="mb-0">Login</h3>
+<div class="container min-vh-100 d-flex align-items-center justify-content-center py-5">
+    <div class="row justify-content-center w-100">
+        <div class="col-md-5">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center py-4 border-0">
+                    <h3 class="mb-0">
+                        <i class="fas fa-user-circle fa-2x mb-3"></i>
+                        <div>Đăng nhập</div>
+                    </h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body p-4">
                     <EditForm Model="@loginModel" OnValidSubmit="HandleLogin" FormName="login-form">
                         <DataAnnotationsValidator />
-                        <ValidationSummary />
 
-                        <div class="form-group mb-3">
-                            <label for="email">Email</label>
-                            <InputText id="email" @bind-Value="loginModel.Email" class="form-control" />
-                            <ValidationMessage For="@(() => loginModel.Email)" />
+                        <div class="form-floating mb-3">
+                            <InputText id="email" @bind-Value="loginModel.Email" class="form-control" placeholder="name@example.com" />
+                            <label for="email">
+                                <i class="fas fa-envelope me-2"></i>Email
+                            </label>
+                            <ValidationMessage For="@(() => loginModel.Email)" class="text-danger small" />
                         </div>
 
-                        <div class="form-group mb-3">
-                            <label for="password">Password</label>
-                            <InputText id="password" @bind-Value="loginModel.Password" class="form-control" type="password" />
-                            <ValidationMessage For="@(() => loginModel.Password)" />
+                        <div class="form-floating mb-4">
+                            <InputText id="password" @bind-Value="loginModel.Password" class="form-control" type="password" placeholder="Mật khẩu" />
+                            <label for="password">
+                                <i class="fas fa-lock me-2"></i>Mật khẩu
+                            </label>
+                            <ValidationMessage For="@(() => loginModel.Password)" class="text-danger small" />
                         </div>
 
                         @if (!string.IsNullOrEmpty(errorMessage))
                         {
-                            <div class="alert alert-danger mt-3">
-                                @errorMessage
+                            <div class="alert alert-danger d-flex align-items-center mt-3" role="alert">
+                                <i class="fas fa-exclamation-circle me-2"></i>
+                                <div>@errorMessage</div>
                             </div>
                         }
 
                         <div class="d-grid gap-2 mt-4">
-                            <button type="submit" class="btn btn-primary" disabled="@isLoading">
+                            <button type="submit" class="btn btn-primary btn-lg" disabled="@isLoading">
                                 @if (isLoading)
                                 {
-                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                                    <span class="ms-2">Đang đăng nhập...</span>
+                                    <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                    <span>Đang đăng nhập...</span>
                                 }
                                 else
                                 {
+                                    <i class="fas fa-sign-in-alt me-2"></i>
                                     <span>Đăng nhập</span>
                                 }
                             </button>
                         </div>
-                        
-                        <div class="text-center mt-3">
-                            <a href="/register">Chưa có tài khoản? Đăng ký</a>
+
+                        <div class="text-center mt-4">
+                            <a href="/register" class="text-decoration-none">
+                                <i class="fas fa-user-plus me-2"></i>Chưa có tài khoản? Đăng ký
+                            </a>
                         </div>
                     </EditForm>
                 </div>
@@ -65,7 +76,7 @@
 </div>
 
 @code {
-    private LoginModel loginModel = new();
+    private LoginRequestModel loginModel = new();
     private string errorMessage = string.Empty;
     private bool isLoading = false;
     private bool isProcessing = false; 
@@ -81,15 +92,11 @@
 
         try
         {
-            // Đảm bảo email và password không null
-            var email = loginModel.Email?.Trim() ?? string.Empty;
-            var password = loginModel.Password ?? string.Empty;
-
             // Thêm một chút độ trễ để hiển thị loading spinner (tối thiểu 500ms)
             await Task.Delay(500);
 
-            // Gọi API xác thực
-            var member = await MemberService.AuthenticateAsync(email, password);
+            // Gọi API xác thực với LoginRequestModel
+            var member = await MemberService.AuthenticateAsync(loginModel);
 
             if (member != null)
             {
@@ -125,14 +132,5 @@
             isLoading = false;
             isProcessing = false;
         }
-    }
-
-    public class LoginModel
-    {
-        [Required(ErrorMessage = "Email là bắt buộc")]
-        public string Email { get; set; } = string.Empty;
-        
-        [Required(ErrorMessage = "Mật khẩu là bắt buộc")]
-        public string Password { get; set; } = string.Empty;
     }
 } 

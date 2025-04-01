@@ -6,16 +6,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BusinessObject.RequestModel;
+using Microsoft.Extensions.Logging;
 
 namespace BusinessObject.Services
 {
     public class MemberService : IMemberService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ILogger<MemberService> _logger;
 
-        public MemberService(IUnitOfWork unitOfWork)
+        public MemberService(IUnitOfWork unitOfWork, ILogger<MemberService> logger)
         {
             _unitOfWork = unitOfWork;
+            _logger = logger;
         }
 
         public async Task<IEnumerable<Member>> GetAllMembersAsync()
@@ -163,40 +167,44 @@ namespace BusinessObject.Services
         /// <summary>
         /// Authenticates a member using email and password
         /// </summary>
-        /// <param name="email">Member's email</param>
-        /// <param name="password">Member's password</param>
+        /// <param name="loginRequest">Login request model</param>
         /// <returns>Member information if authentication succeeds, null otherwise</returns>
-        public async Task<Member> AuthenticateAsync(string email, string password)
+        public async Task<Member?> AuthenticateAsync(LoginRequestModel loginRequest)
         {
             try
             {
-                // Nếu email hoặc password trống, trả về null
-                if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+                if (loginRequest == null || string.IsNullOrWhiteSpace(loginRequest.Email) || string.IsNullOrWhiteSpace(loginRequest.Password))
                 {
+                    _logger.LogWarning("Login attempt with null or empty credentials");
                     return null;
                 }
 
-                // Đầu tiên kiểm tra xem email có tồn tại không
-                var membersByEmail = await _unitOfWork.Members.FindAsync(m => m.Email.Equals(email));
-                var memberWithEmail = membersByEmail.FirstOrDefault();
+                var email = loginRequest.Email.Trim();
+                var password = loginRequest.Password;
 
-                if (memberWithEmail == null)
-                {
-                    // Email không tồn tại
-                    return null;
-                }
-
-                // Sau đó kiểm tra mật khẩu
-                var members = await _unitOfWork.Members.FindAsync(m => m.Email.Equals(email) && m.Password.Equals(password));
+                // Kiểm tra email tồn tại
+                var members = await _unitOfWork.Members.FindAsync(m => m.Email == email);
                 var member = members.FirstOrDefault();
+                
+                if (member == null)
+                {
+                    _logger.LogWarning("Login attempt with non-existent email: {Email}", email);
+                    return null;
+                }
 
-                // Nếu không tìm thấy, nghĩa là mật khẩu không khớp
+                // Kiểm tra mật khẩu
+                if (member.Password != password)
+                {
+                    _logger.LogWarning("Login attempt with incorrect password for email: {Email}", email);
+                    return null;
+                }
+
+                _logger.LogInformation("Successful login for email: {Email}", email);
                 return member;
             }
             catch (Exception ex)
             {
-                // Log lỗi
-                Console.WriteLine($"Authentication error: {ex.Message}");
+                _logger.LogError(ex, "Error during authentication for email: {Email}", loginRequest?.Email);
                 return null;
             }
         }

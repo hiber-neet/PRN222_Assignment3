@@ -1,3 +1,4 @@
+using BusinessObject.RequestModel;
 using DataAccess.Models;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,6 @@ namespace BusinessObject.Services.Instance
         Task<bool> MemberHasOrdersAsync(int memberId);
 
         // Authenticate a member
-        Task<Member> AuthenticateAsync(string email, string password);
+        Task<Member> AuthenticateAsync(LoginRequestModel loginRequest);
     }
 }
