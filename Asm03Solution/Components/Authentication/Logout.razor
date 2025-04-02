@@ -1,0 +1,27 @@
+@page "/logout"
+@using Microsoft.AspNetCore.Components
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+
+<PageTitle>Logout</PageTitle>
+
+<div class="container mt-5">
+    <div class="text-center">
+        <h3>Logging out...</h3>
+        <div class="spinner-border text-primary mt-3" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</div>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        // Xóa dữ liệu người dùng khỏi localStorage
+        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "currentUser");
+        
+        // Đợi một chút trước khi chuyển hướng về trang chủ
+        await Task.Delay(1000);
+        NavigationManager.NavigateTo("/");
+    }
+} 
