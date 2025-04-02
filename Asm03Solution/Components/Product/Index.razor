@@ -88,10 +88,10 @@
         loading = true;
         try
         {
-            products = await UnitOfWork.Products.GetAllAsync();
+            products = await UnitOfWork.Repository<Product>().GetAllAsync();
             
             // Load related categories
-            var categoriesDict = (await UnitOfWork.Categories.GetAllAsync())
+            var categoriesDict = (await UnitOfWork.Repository<Category>().GetAllAsync())
                 .ToDictionary(c => c.CategoryId);
                 
             foreach (var product in products)

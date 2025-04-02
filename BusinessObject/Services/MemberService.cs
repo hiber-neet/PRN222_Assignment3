@@ -24,30 +24,30 @@ namespace BusinessObject.Services
 
         public async Task<IEnumerable<Member>> GetAllMembersAsync()
         {
-            return await _unitOfWork.Members.GetAllAsync();
+            return await _unitOfWork.Repository<Member>().GetAllAsync();
         }
 
         public async Task<Member> GetMemberByIdAsync(int id)
         {
-            return await _unitOfWork.Members.GetByIdAsync(id);
+            return await _unitOfWork.Repository<Member>().GetByIdAsync(id);
         }
 
         public async Task<Member> GetMemberByEmailAsync(string email)
         {
-            var members = await _unitOfWork.Members.FindAsync(m => m.Email.Equals(email));
+            var members = await _unitOfWork.Repository<Member>().FindAsync(m => m.Email.Equals(email));
             return members.FirstOrDefault();
         }
 
         public async Task<IEnumerable<Order>> GetMemberOrdersAsync(int memberId)
         {
             // Check if member exists
-            var member = await _unitOfWork.Members.GetByIdAsync(memberId);
+            var member = await _unitOfWork.Repository<Member>().GetByIdAsync(memberId);
             if (member == null)
             {
                 throw new KeyNotFoundException($"Member with ID {memberId} not found");
             }
 
-            return await _unitOfWork.Orders.FindAsync(o => o.MemberId == memberId);
+            return await _unitOfWork.Repository<Order>().FindAsync(o => o.MemberId == memberId);
         }
 
         public async Task<Member> CreateMemberAsync(Member member)
@@ -63,8 +63,8 @@ namespace BusinessObject.Services
                 throw new InvalidOperationException($"Member with email {member.Email} already exists");
             }
 
-            await _unitOfWork.Members.AddAsync(member);
-            await _unitOfWork.CompleteAsync();
+            await _unitOfWork.Repository<Member>().AddAsync(member);
+            await _unitOfWork.CommitAsync();
 
             return member;
         }
@@ -82,7 +82,7 @@ namespace BusinessObject.Services
             }
 
             // Check if member exists
-            var existingMember = await _unitOfWork.Members.GetByIdAsync(id);
+            var existingMember = await _unitOfWork.Repository<Member>().GetByIdAsync(id);
             if (existingMember == null)
             {
                 throw new KeyNotFoundException($"Member with ID {id} not found");
@@ -123,13 +123,13 @@ namespace BusinessObject.Services
             }
 
             // Update the entity using the updated existingMember
-            _unitOfWork.Members.Update(existingMember);
-            await _unitOfWork.CompleteAsync();
+            _unitOfWork.Repository<Member>().Update(existingMember);
+            await _unitOfWork.CommitAsync();
         }
 
         public async Task DeleteMemberAsync(int id)
         {
-            var member = await _unitOfWork.Members.GetByIdAsync(id);
+            var member = await _unitOfWork.Repository<Member>().GetByIdAsync(id);
             if (member == null)
             {
                 throw new KeyNotFoundException($"Member with ID {id} not found");
@@ -141,13 +141,13 @@ namespace BusinessObject.Services
                 throw new InvalidOperationException("Cannot delete member because they have associated orders");
             }
 
-            _unitOfWork.Members.Remove(member);
-            await _unitOfWork.CompleteAsync();
+            _unitOfWork.Repository<Member>().Remove(member);
+            await _unitOfWork.CommitAsync();
         }
 
         public async Task<bool> EmailExistsAsync(string email, int? excludeMemberId = null)
         {
-            var query = await _unitOfWork.Members.FindAsync(m => m.Email.Equals(email));
+            var query = await _unitOfWork.Repository<Member>().FindAsync(m => m.Email.Equals(email));
 
             if (excludeMemberId.HasValue)
             {
@@ -160,7 +160,7 @@ namespace BusinessObject.Services
 
         public async Task<bool> MemberHasOrdersAsync(int memberId)
         {
-            var orders = await _unitOfWork.Orders.FindAsync(o => o.MemberId == memberId);
+            var orders = await _unitOfWork.Repository<Order>().FindAsync(o => o.MemberId == memberId);
             return orders.Any();
         }
 
@@ -171,40 +171,58 @@ namespace BusinessObject.Services
         /// <returns>Member information if authentication succeeds, null otherwise</returns>
         public async Task<Member?> AuthenticateAsync(LoginRequestModel loginRequest)
         {
+            // Guard clauses
+            if (loginRequest == null)
+            {
+                _logger.LogWarning("Login attempt with null login request");
+                return null;
+            }
+
+            // Trim and validate input
+            var email = (loginRequest.Email ?? string.Empty).Trim();
+            var password = loginRequest.Password ?? string.Empty;
+
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+            {
+                _logger.LogWarning("Login attempt with empty email or password");
+                return null;
+            }
+
             try
             {
-                if (loginRequest == null || string.IsNullOrWhiteSpace(loginRequest.Email) || string.IsNullOrWhiteSpace(loginRequest.Password))
-                {
-                    _logger.LogWarning("Login attempt with null or empty credentials");
-                    return null;
-                }
-
-                var email = loginRequest.Email.Trim();
-                var password = loginRequest.Password;
-
-                // Kiểm tra email tồn tại
-                var members = await _unitOfWork.Members.FindAsync(m => m.Email == email);
+                // Try to find the member with the given email
+                var members = await _unitOfWork.Repository<Member>().FindAsync(m => m.Email == email);
                 var member = members.FirstOrDefault();
-                
+
                 if (member == null)
                 {
                     _logger.LogWarning("Login attempt with non-existent email: {Email}", email);
                     return null;
                 }
 
-                // Kiểm tra mật khẩu
+                // Validate password - in a real production app, passwords should be hashed!
                 if (member.Password != password)
                 {
                     _logger.LogWarning("Login attempt with incorrect password for email: {Email}", email);
                     return null;
                 }
 
+                // Optional: Update last login timestamp or other audit info
+                // member.LastLoginDate = DateTime.UtcNow;
+                // _unitOfWork.Repository<Member>().Update(member);
+                // await _unitOfWork.CommitAsync();
+
                 _logger.LogInformation("Successful login for email: {Email}", email);
                 return member;
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error during authentication for email: {Email}", loginRequest?.Email);
+                _logger.LogError(ex, "Exception during authentication for email: {Email}", email);
+                // Rethrow if it's a critical exception, otherwise return null
+                if (ex is OutOfMemoryException || ex is StackOverflowException)
+                {
+                    throw;
+                }
                 return null;
             }
         }
