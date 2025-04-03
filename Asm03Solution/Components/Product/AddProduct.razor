@@ -1,0 +1,168 @@
+﻿@page "/product/add"
+@rendermode InteractiveServer
+@using DataAccess.Models
+@using DataAccess.Repositories
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Forms
+@inject IUnitOfWork UnitOfWork
+@inject NavigationManager NavigationManager
+
+<PageTitle>Add Product</PageTitle>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Add New Product</h1>
+        <a href="/product" class="btn btn-secondary">Back to List</a>
+    </div>
+
+    @if (loading)
+    {
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="card">
+            <div class="card-body">
+                <EditForm Model="@newProduct" OnSubmit="@HandleSubmit">
+                    <DataAnnotationsValidator />
+                    
+
+                    <div class="mb-3">
+                        <label class="form-label">Product Name <span class="text-danger">*</span></label>
+                        <InputText class="form-control" @bind-Value="newProduct.ProductName" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Weight</label>
+                        <InputText class="form-control" @bind-Value="newProduct.Weight" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Unit Price <span class="text-danger">*</span></label>
+                        <InputNumber class="form-control" @bind-Value="newProduct.UnitPrice" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Units In Stock <span class="text-danger">*</span></label>
+                        <InputNumber class="form-control" @bind-Value="newProduct.UnitsInStock" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Category <span class="text-danger">*</span></label>
+                        <InputSelect class="form-select" @bind-Value="newProduct.CategoryId">
+                            <option value="0">Select a category...</option>
+                            @foreach (var category in categories)
+                            {
+                                <option value="@category.CategoryId">@category.CategoryName</option>
+                            }
+                        </InputSelect>
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary me-2">Save</button>
+                        <button type="button" class="btn btn-secondary" @onclick="ClearForm">Clear</button>
+                    </div>
+                </EditForm>
+
+                @if (errorMessages.Any())
+                {
+                    <div class="alert alert-danger mt-3">
+                        <ul>
+                            @foreach (var error in errorMessages)
+                            {
+                                <li>@error</li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private Product newProduct = new Product();
+    private IEnumerable<Category> categories = new List<Category>();
+    private bool loading = true;
+    private List<string> errorMessages = new List<string>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadCategories();
+        loading = false;
+    }
+
+    private async Task LoadCategories()
+    {
+        try
+        {
+            categories = await UnitOfWork.Categories.GetAllAsync();
+        }
+        catch (Exception ex)
+        {
+            errorMessages.Add($"Error loading categories: {ex.Message}");
+        }
+    }
+
+    private async Task HandleSubmit(EditContext editContext)
+    {
+        errorMessages.Clear(); // Xóa các lỗi cũ trước khi kiểm tra
+
+        // Kiểm tra validation từ DataAnnotations
+        if (!editContext.Validate())
+        {
+            var messages = editContext.GetValidationMessages();
+            errorMessages.AddRange(messages);
+            return;
+        }
+
+        // Kiểm tra các điều kiện bổ sung
+        if (string.IsNullOrEmpty(newProduct.ProductName))
+        {
+            errorMessages.Add("Product Name cannot be empty.");
+        }
+        if (string.IsNullOrEmpty(newProduct.Weight))
+        {
+            errorMessages.Add("Product Weight cannot be empty.");
+        }
+        if (newProduct.UnitPrice <= 0)
+        {
+            errorMessages.Add("Unit Price must be greater than 0.");
+        }
+        if (newProduct.UnitsInStock <= 0)
+        {
+            errorMessages.Add("Units In Stock must be greater than 0.");
+        }
+        if (newProduct.CategoryId == 0)
+        {
+            errorMessages.Add("Please select a category.");
+        }
+
+        if (errorMessages.Any())
+        {
+            return;
+        }
+
+        try
+        {
+            await UnitOfWork.Products.AddAsync(newProduct);
+            await UnitOfWork.CompleteAsync();
+            NavigationManager.NavigateTo("/product");
+        }
+        catch (Exception ex)
+        {
+            errorMessages.Add($"Error adding product: {ex.Message}");
+        }
+    }
+
+    private void ClearForm()
+    {
+        newProduct = new Product(); // Đặt lại đối tượng về giá trị mặc định
+        errorMessages.Clear(); // Xóa các thông báo lỗi
+        StateHasChanged(); // Cập nhật UI
+    }
+}

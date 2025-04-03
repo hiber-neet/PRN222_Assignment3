@@ -1,4 +1,5 @@
 @page "/product"
+@rendermode InteractiveServer
 @using DataAccess.Models
 @using DataAccess.Repositories
 @using Microsoft.AspNetCore.Components
@@ -11,7 +12,7 @@
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Products</h1>
-        <button class="btn btn-primary" @onclick="CreateProduct">Create New</button>
+        <button class="btn btn-primary" @onclick="CreateNewProduct">Create New</button>
     </div>
 
     @if (loading)
@@ -53,7 +54,6 @@
                             <td>@(product.Category?.CategoryName ?? "N/A")</td>
                             <td>
                                 <button class="btn btn-primary btn-sm me-1" @onclick="() => EditProduct(product.ProductId)">Edit</button>
-                                <button class="btn btn-info btn-sm me-1" @onclick="() => ViewProductDetails(product.ProductId)">Details</button>
                                 <button class="btn btn-danger btn-sm" @onclick="() => DeleteProduct(product.ProductId)">Delete</button>
                             </td>
                         </tr>
@@ -62,23 +62,27 @@
             </table>
         </div>
     }
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="alert alert-danger mt-3">@errorMessage</div>
+    }
 </div>
 
 @code {
     private IEnumerable<Product> products;
     private bool loading = true;
     private bool isAuthenticated = false;
+    private string errorMessage;
 
     protected override async Task OnInitializedAsync()
     {
-        // Kiểm tra xem người dùng đã đăng nhập chưa
         await CheckAuthentication();
-
-        if (!isAuthenticated)
-        {
-            NavigationManager.NavigateTo("/login");
-            return;
-        }
+        // if (!isAuthenticated)
+        // {
+        //     NavigationManager.NavigateTo("/login");
+        //     return;
+        // }
 
         await LoadProducts();
     }
@@ -88,12 +92,16 @@
         loading = true;
         try
         {
-            products = await UnitOfWork.Repository<Product>().GetAllAsync();
-            
-            // Load related categories
-            var categoriesDict = (await UnitOfWork.Repository<Category>().GetAllAsync())
-                .ToDictionary(c => c.CategoryId);
-                
+            if (UnitOfWork == null)
+            {
+                errorMessage = "Database service unavailable.";
+                loading = false;
+                return;
+            }
+
+            products = await UnitOfWork.Products.GetAllAsync();
+            var categoriesDict = (await UnitOfWork.Categories.GetAllAsync())?.ToDictionary(c => c.CategoryId) ?? new Dictionary<int, Category>();
+
             foreach (var product in products)
             {
                 if (categoriesDict.ContainsKey(product.CategoryId))
@@ -104,7 +112,7 @@
         }
         catch (Exception ex)
         {
-            await JSRuntime.InvokeVoidAsync("alert", $"Error loading products: {ex.Message}");
+            errorMessage = $"Error loading products: {ex.Message}";
         }
         finally
         {
@@ -117,18 +125,19 @@
     {
         try
         {
-            var userJson = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "currentUser");
+            var userJson = await JSRuntime.InvokeAsync<string>("localStorage.getItem", new object[] { "currentUser" });
             isAuthenticated = !string.IsNullOrEmpty(userJson);
         }
-        catch
+        catch (Exception ex)
         {
             isAuthenticated = false;
+            errorMessage = $"Error checking authentication: {ex.Message}";
         }
     }
 
-    private void CreateProduct()
+    private void CreateNewProduct()
     {
-        NavigationManager.NavigateTo("/product/create");
+        NavigationManager.NavigateTo("/product/add");
     }
 
     private void EditProduct(int id)
@@ -136,13 +145,8 @@
         NavigationManager.NavigateTo($"/product/edit/{id}");
     }
 
-    private void ViewProductDetails(int id)
-    {
-        NavigationManager.NavigateTo($"/product/details/{id}");
-    }
-
     private void DeleteProduct(int id)
     {
         NavigationManager.NavigateTo($"/product/delete/{id}");
     }
-} 
+}

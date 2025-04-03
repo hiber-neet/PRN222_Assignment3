@@ -1,0 +1,204 @@
+﻿@page "/product/edit/{id:int}"
+@rendermode InteractiveServer
+@using DataAccess.Models
+@using DataAccess.Repositories
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Forms
+@inject IUnitOfWork UnitOfWork
+@inject NavigationManager NavigationManager
+
+<PageTitle>Edit Product</PageTitle>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Edit Product</h1>
+        <button class="btn btn-secondary" @onclick="BackToList">Back to List</button>
+    </div>
+
+    @if (loading)
+    {
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    }
+    else if (product == null)
+    {
+        <div class="alert alert-danger">
+            Product not found.
+        </div>
+    }
+    else
+    {
+        <div class="card">
+            <div class="card-body">
+                <EditForm Model="@product" OnSubmit="@HandleSubmit">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+
+                    <div class="mb-3">
+                        <label class="form-label">Product Name <span class="text-danger">*</span></label>
+                        <InputText class="form-control" @bind-Value="product.ProductName" />
+                        <ValidationMessage For="@(() => product.ProductName)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Weight</label>
+                        <InputText class="form-control" @bind-Value="product.Weight" />
+                        <ValidationMessage For="@(() => product.Weight)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Unit Price <span class="text-danger">*</span></label>
+                        <InputNumber class="form-control" @bind-Value="product.UnitPrice" />
+                        <ValidationMessage For="@(() => product.UnitPrice)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Units In Stock <span class="text-danger">*</span></label>
+                        <InputNumber class="form-control" @bind-Value="product.UnitsInStock" />
+                        <ValidationMessage For="@(() => product.UnitsInStock)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Category <span class="text-danger">*</span></label>
+                        <InputSelect class="form-select" @bind-Value="product.CategoryId">
+                            <option value="0">Select a category...</option>
+                            @foreach (var category in categories)
+                            {
+                                <option value="@category.CategoryId">@category.CategoryName</option>
+                            }
+                        </InputSelect>
+                        <ValidationMessage For="@(() => product.CategoryId)" />
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </EditForm>
+
+                @if (errorMessages.Any())
+                {
+                    <div class="alert alert-danger mt-3">
+                        <ul>
+                            @foreach (var error in errorMessages)
+                            {
+                                <li>@error</li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private Product product;
+    private IEnumerable<Category> categories = new List<Category>();
+    private bool loading = true;
+    private List<string> errorMessages = new List<string>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (UnitOfWork == null)
+        {
+            errorMessages.Add("Database service unavailable.");
+            loading = false;
+            return;
+        }
+
+        await LoadCategories();
+        await LoadProduct();
+        loading = false;
+    }
+
+    private async Task LoadCategories()
+    {
+        try
+        {
+            categories = await UnitOfWork.Categories.GetAllAsync();
+        }
+        catch (Exception ex)
+        {
+            errorMessages.Add($"Error loading categories: {ex.Message}");
+        }
+    }
+
+    private async Task LoadProduct()
+    {
+        try
+        {
+            product = await UnitOfWork.Products.GetByIdAsync(Id);
+            if (product == null)
+            {
+                errorMessages.Add($"Product with ID {Id} not found.");
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessages.Add($"Error loading product: {ex.Message}");
+        }
+    }
+
+    private async Task HandleSubmit(EditContext editContext)
+    {
+        errorMessages.Clear(); // Xóa các lỗi cũ trước khi kiểm tra
+
+        // Kiểm tra validation từ DataAnnotations
+        if (!editContext.Validate())
+        {
+            var messages = editContext.GetValidationMessages();
+            errorMessages.AddRange(messages);
+            return;
+        }
+
+        // Kiểm tra các điều kiện bổ sung
+        if (string.IsNullOrEmpty(product.ProductName))
+        {
+            errorMessages.Add("Product Name cannot be empty.");
+        }
+
+        if (product.UnitPrice <= 0)
+        {
+            errorMessages.Add("Unit Price must be greater than 0.");
+        }
+
+        if (product.UnitsInStock <= 0)
+        {
+            errorMessages.Add("Units In Stock must be greater than 0.");
+        }
+
+        if (product.CategoryId == 0)
+        {
+            errorMessages.Add("Please select a category.");
+        }
+
+        // Nếu có lỗi, dừng xử lý
+        if (errorMessages.Any())
+        {
+            return;
+        }
+
+        // Nếu không có lỗi, cập nhật sản phẩm
+        try
+        {
+            UnitOfWork.Products.Update(product);
+            await UnitOfWork.CompleteAsync();
+            NavigationManager.NavigateTo("/product");
+        }
+        catch (Exception ex)
+        {
+            errorMessages.Add($"Error updating product: {ex.Message}");
+        }
+    }
+
+    private void BackToList()
+    {
+        NavigationManager.NavigateTo("/product");
+    }
+}
