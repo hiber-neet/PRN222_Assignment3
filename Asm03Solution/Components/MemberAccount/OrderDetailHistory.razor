@@ -1,0 +1,58 @@
+﻿@page "/orderdetailhistory/{orderId:int}"
+@using Asm03Solution.DataAccess.Models
+@using BusinessObject.Services
+@rendermode InteractiveServer
+@inject NavigationManager NavigationManager;
+@inject OrderDetailService orderService;
+
+<h3>Order Detail History</h3>
+
+@if (orderDetails == null)
+{
+    <p>Loading...</p>
+}
+else if (!orderDetails.Any())
+{
+    <p>No details found for this order.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Discount</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var detail in orderDetails)
+            {
+                <tr>
+                    <td>@detail.Product.ProductName</td>
+                    <td>@detail.UnitPrice</td>
+                    <td>@detail.Quantity</td>
+                    <td>@detail.Discount</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<button class="btn btn-secondary" @onclick="GoBack">Back to Order History</button>
+
+@code {
+    [Parameter] public int orderId { get; set; }
+    private List<OrderDetail>? orderDetails;
+
+    protected override async Task OnInitializedAsync()
+    {
+        orderDetails = await orderService.GetOrderDetailsByOrderId(orderId);
+    }
+
+    private void GoBack()
+    {
+        NavigationManager.NavigateTo("/orderhistory");
+    }
+}

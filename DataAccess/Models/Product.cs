@@ -5,8 +5,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Asm03Solution.DataAccess.Models;
+ 
 
-namespace DataAccess.Models
+namespace Asm03Solution.DataAccess.Models
 {
     public class Product
     {

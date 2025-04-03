@@ -1,6 +1,5 @@
 ﻿using Asm03Solution.DataAccess.Models;
 using Asm03Solution.DataAccess.Repositories;
-using DataAccess.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

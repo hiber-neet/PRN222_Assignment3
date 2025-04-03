@@ -1,0 +1,76 @@
+﻿@page "/salesreport"
+@using BusinessObject.Services
+@using DataAccess.Models
+@inject NavigationManager NavigationManager;
+@inject OrderService orderService;
+@rendermode InteractiveServer
+<h3>Sales Report</h3>
+
+<div class="mb-3">
+    <label>Start Date:</label>
+    <InputDate @bind-Value="startDate" class="form-control" />
+</div>
+
+<div class="mb-3">
+    <label>End Date:</label>
+    <InputDate @bind-Value="endDate" class="form-control" />
+</div>
+
+<button class="btn btn-primary" @onclick="GenerateReport">Generate Report</button>
+
+@if (orders != null && orders.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Order Date</th>
+                <th>Product Name</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Discount</th>
+                <th>Total Sales</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in orders)
+            {
+                @foreach (var detail in order.OrderDetails)
+                {
+                    <tr>
+                        <td>@order.OrderId</td>
+                        <td>@order.OrderDate.ToString("MM/dd/yyyy")</td>
+                        <td>@detail.Product.ProductName</td>
+                        <td>@detail.UnitPrice</td>
+                        <td>@detail.Quantity</td>
+                        <td>@detail.Discount</td>
+                        <td>@(detail.UnitPrice * detail.Quantity * (1 - (decimal)detail.Discount))</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
+else if (orders != null)
+{
+    <div class="mt-5">
+        <strong>No sales found for the selected period.</strong>
+    </div>
+
+}
+
+@code {
+    private DateTime startDate = DateTime.Today.AddDays(-30);
+    private DateTime endDate = DateTime.Today;
+    private List<Order>? orders;
+
+    private async Task GenerateReport()
+    {
+        //giam dan theo date
+        orders = await orderService.GetOrdersByPeriodAsync(startDate, endDate);
+
+        // tong doanh thu giam dan chua fix duoc
+        // orders = orders.OrderByDescending(o => o.OrderDetails.Sum(d => d.UnitPrice * d.Quantity * (1 - (decimal)d.Discount))).ToList();
+      
+    }
+}

@@ -1,5 +1,4 @@
-﻿
-@using Microsoft.AspNetCore.Http
+﻿@using Microsoft.AspNetCore.Http
 @inject IHttpContextAccessor HttpContextAccessor
 @inject NavigationManager NavigationManager
 @rendermode InteractiveServer
@@ -9,10 +8,16 @@
         <NavLink href="/" class="text-light text-decoration-none fs-4 fw-bold">Ecommerce Blazor</NavLink>
         <ul class="nav">
             <li><NavLink href="/" class="link-light nav-link">Home</NavLink></li>
-            <li><NavLink href="/about" class="link-light nav-link">About</NavLink></li>
-            <li><NavLink href="/member-management" class="link-light nav-link">Member Management</NavLink></li>
-            <li><NavLink href="/product-management" class="link-light nav-link">Product Management</NavLink></li>
-            <li><NavLink href="/order-management" class="link-light nav-link">Order Management</NavLink></li>
+            <li><NavLink href="/profile" class="link-light nav-link">About</NavLink></li>
+
+            @if (IsAdmin)
+            {
+                <li><NavLink href="/member-management" class="link-light nav-link">Member Management</NavLink></li>
+                <li><NavLink href="/product-management" class="link-light nav-link">Product Management</NavLink></li>
+                <li><NavLink href="/order-management" class="link-light nav-link">Order Management</NavLink></li>
+                <li><NavLink href="/salesreport" class="link-light nav-link">Sale Report</NavLink></li>
+                <li><NavLink href="/searchproduct" class="link-light nav-link">Search Product</NavLink></li>
+            }
         </ul>
 
         <div class="text-end">
@@ -29,26 +34,35 @@
 </div>
 
 @code {
-    private bool IsUserLoggedIn => !string.IsNullOrEmpty(HttpContextAccessor.HttpContext?.Session.GetString("Email"));
+    private string? UserEmail => HttpContextAccessor.HttpContext?.Session.GetString("Email");
+    private bool IsUserLoggedIn => !string.IsNullOrEmpty(UserEmail);
+    private bool IsAdmin => UserEmail == "admin@estore.com";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Yield(); // Đợi UI render xong
+
+        if (!IsAdmin && (NavigationManager.Uri.Contains("/member-management") ||
+                         NavigationManager.Uri.Contains("/product-management") ||
+                         NavigationManager.Uri.Contains("/order-management") ||
+                         NavigationManager.Uri.Contains("/salesreport") ||
+                         NavigationManager.Uri.Contains("/searchproduct")))
+        {
+            NavigationManager.NavigateTo("/", forceLoad: true);
+        }
+    }
 
     private async Task Logout()
     {
-        Console.WriteLine("call logout here baby");
-
         try
         {
-            // Xóa toàn bộ session
             HttpContextAccessor.HttpContext?.Session.Clear();
-
-            // Cập nhật lại giao diện
             StateHasChanged();
-
-            // Điều hướng về trang Login
             NavigationManager.NavigateTo("/Login", forceLoad: true);
         }
         catch (Exception ex)
         {
-            Console.WriteLine("Đăng xuất thất bại: " + ex.Message);
+            Console.WriteLine("Sign out fail " + ex.Message);
         }
     }
 }

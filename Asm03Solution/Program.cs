@@ -20,8 +20,14 @@ namespace Asm03Solution
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             //cau hinh di repo+service
-			builder.Services.AddScoped<MemberRepository>();
-			builder.Services.AddScoped<MemberService>();
+            builder.Services.AddScoped<MemberRepository>();
+            builder.Services.AddScoped<MemberService>();
+            builder.Services.AddScoped<OrderRepository>();
+            builder.Services.AddScoped<OrderService>();
+            builder.Services.AddScoped<OrderDetailRepository>();
+            builder.Services.AddScoped<OrderDetailService>();
+            builder.Services.AddScoped<ProductRepository>();
+            builder.Services.AddScoped<ProductService>();
 
             //cau hinh session
             builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -43,8 +49,8 @@ namespace Asm03Solution
             }
 
             app.UseHttpsRedirection();
-			app.UseSession(); // Enable session handling
-			app.UseStaticFiles();
+            app.UseSession(); // Enable session handling
+            app.UseStaticFiles();
             app.UseAntiforgery();
 
             app.MapRazorComponents<App>()

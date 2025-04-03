@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using DataAccess.Models;
 using Asm03Solution.DataAccess.Models;
 
 namespace BusinessObject.Services
