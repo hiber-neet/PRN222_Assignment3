@@ -133,22 +133,9 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 616,
+          "DockedHeight": 1124,
           "SelectedChildIndex": 6,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Routes.razor",
-              "DocumentMoniker": "E:\\PRN221_ASM\\ASM3\\PRN222_Assignment3\\Asm03Solution\\Components\\Routes.razor",
-              "RelativeDocumentMoniker": "Asm03Solution\\Components\\Routes.razor",
-              "ToolTip": "E:\\PRN221_ASM\\ASM3\\PRN222_Assignment3\\Asm03Solution\\Components\\Routes.razor",
-              "RelativeToolTip": "Asm03Solution\\Components\\Routes.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-03T19:44:20.883Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
@@ -171,13 +158,25 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Routes.razor",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM3\\PRN222_Assignment3\\Asm03Solution\\Components\\Routes.razor",
+              "RelativeDocumentMoniker": "Asm03Solution\\Components\\Routes.razor",
+              "ToolTip": "E:\\PRN221_ASM\\ASM3\\PRN222_Assignment3\\Asm03Solution\\Components\\Routes.razor",
+              "RelativeToolTip": "Asm03Solution\\Components\\Routes.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-03T19:44:20.883Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\PRN221_ASM\\ASM3\\PRN222_Assignment3\\Asm03Solution\\Program.cs",
               "RelativeDocumentMoniker": "Asm03Solution\\Program.cs",
               "ToolTip": "E:\\PRN221_ASM\\ASM3\\PRN222_Assignment3\\Asm03Solution\\Program.cs",
               "RelativeToolTip": "Asm03Solution\\Program.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAQwCcAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAowF4AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-03T19:28:32.446Z",
               "EditorCaption": ""
@@ -192,8 +191,7 @@
               "RelativeToolTip": "DataAccess\\DbInitializer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-03T19:44:10.876Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-03T19:44:10.876Z"
             },
             {
               "$type": "Document",
@@ -205,8 +203,7 @@
               "RelativeToolTip": "DataAccess\\ECommerceContext.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-03T19:44:05.634Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-03T19:44:05.634Z"
             },
             {
               "$type": "Document",
@@ -290,8 +287,7 @@
               "RelativeToolTip": "Asm03Solution\\Components\\Member\\AddMember.razor",
               "ViewState": "AgIAAK4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-03T19:34:38.305Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-03T19:34:38.305Z"
             },
             {
               "$type": "Document",
@@ -532,6 +528,16 @@
               "ViewState": "AgIAACcAAAAAAAAAAAAAADMAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-03T17:41:02.103Z"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 411,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             }
           ]
         },
