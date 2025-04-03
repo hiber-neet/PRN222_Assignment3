@@ -1,0 +1,215 @@
+@page "/member/edit/{id:int}"
+@rendermode InteractiveServer
+@using DataAccess.Models
+@using BusinessObject.Services.Instance
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Forms
+@inject IMemberService MemberService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Edit Member</PageTitle>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Edit Member</h1>
+        <button class="btn btn-secondary" @onclick="BackToList">Back to List</button>
+    </div>
+
+    @if (loading)
+    {
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    }
+    else if (member == null)
+    {
+        <div class="alert alert-danger">
+            Member not found.
+        </div>
+    }
+    else
+    {
+        <div class="card">
+            <div class="card-body">
+                <EditForm Model="@member" OnSubmit="@HandleSubmit">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+
+                    <div class="mb-3">
+                        <label class="form-label">Email <span class="text-danger">*</span></label>
+                        <InputText class="form-control" @bind-Value="member.Email" />
+                        <ValidationMessage For="@(() => member.Email)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Company Name <span class="text-danger">*</span></label>
+                        <InputText class="form-control" @bind-Value="member.CompanyName" />
+                        <ValidationMessage For="@(() => member.CompanyName)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">City <span class="text-danger">*</span></label>
+                        <InputText class="form-control" @bind-Value="member.City" />
+                        <ValidationMessage For="@(() => member.City)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Country <span class="text-danger">*</span></label>
+                        <InputText class="form-control" @bind-Value="member.Country" />
+                        <ValidationMessage For="@(() => member.Country)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Password <span class="text-danger">*</span></label>
+                        <InputText type="password" class="form-control" @bind-Value="member.Password" />
+                        <ValidationMessage For="@(() => member.Password)" />
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </EditForm>
+
+                @if (errorMessages.Any())
+                {
+                    <div class="alert alert-danger mt-3">
+                        <ul>
+                            @foreach (var error in errorMessages)
+                            {
+                                <li>@error</li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private Member member;
+    private bool loading = true;
+    private List<string> errorMessages = new List<string>();
+    private bool isAuthenticated = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CheckAuthentication();
+        if (!isAuthenticated)
+        {
+            NavigationManager.NavigateTo("/login");
+            return;
+        }
+
+        await LoadMember();
+        loading = false;
+    }
+
+    private async Task LoadMember()
+    {
+        try
+        {
+            member = await MemberService.GetMemberByIdAsync(Id);
+            if (member == null)
+            {
+                errorMessages.Add($"Member with ID {Id} not found.");
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessages.Add($"Error loading member: {ex.Message}");
+        }
+    }
+
+    private async Task CheckAuthentication()
+    {
+        try
+        {
+            var userJson = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "currentUser");
+            isAuthenticated = !string.IsNullOrEmpty(userJson);
+        }
+        catch (Exception ex)
+        {
+            isAuthenticated = false;
+            errorMessages.Add($"Error checking authentication: {ex.Message}");
+        }
+    }
+
+    private async Task HandleSubmit(EditContext editContext)
+    {
+        errorMessages.Clear();
+
+        // Validate from DataAnnotations
+        if (!editContext.Validate())
+        {
+            var messages = editContext.GetValidationMessages();
+            errorMessages.AddRange(messages);
+            return;
+        }
+
+        // Additional custom validations
+        if (string.IsNullOrEmpty(member.Email))
+        {
+            errorMessages.Add("Email cannot be empty.");
+        }
+        if (string.IsNullOrEmpty(member.CompanyName))
+        {
+            errorMessages.Add("Company Name cannot be empty.");
+        }
+        if (string.IsNullOrEmpty(member.City))
+        {
+            errorMessages.Add("City cannot be empty.");
+        }
+        if (string.IsNullOrEmpty(member.Country))
+        {
+            errorMessages.Add("Country cannot be empty.");
+        }
+        if (string.IsNullOrEmpty(member.Password))
+        {
+            errorMessages.Add("Password cannot be empty.");
+        }
+
+        if (errorMessages.Any())
+        {
+            return;
+        }
+
+        // Update member
+        try
+        {
+            loading = true;
+            
+            // Check if email exists (excluding current member)
+            var existingMember = await MemberService.GetMemberByEmailAsync(member.Email);
+            if (existingMember != null && existingMember.MemberId != member.MemberId)
+            {
+                errorMessages.Add("Email already exists. Please use another email.");
+                loading = false;
+                return;
+            }
+            
+            await MemberService.UpdateMemberAsync(member);
+            NavigationManager.NavigateTo("/member");
+        }
+        catch (Exception ex)
+        {
+            errorMessages.Add($"Error updating member: {ex.Message}");
+        }
+        finally
+        {
+            loading = false;
+            StateHasChanged();
+        }
+    }
+
+    private void BackToList()
+    {
+        NavigationManager.NavigateTo("/member");
+    }
+} 
