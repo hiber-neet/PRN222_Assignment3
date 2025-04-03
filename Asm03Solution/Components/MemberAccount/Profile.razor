@@ -64,7 +64,7 @@
             return;
         }
 
-        user = await userAccountService.GetMemberByEmailAsync(email);
+        user = await userAccountService.GetMemberByEmail(email);
     }
 
     protected async Task HandleValidSubmit()
@@ -78,19 +78,27 @@
         try
         {
             Console.WriteLine($"Before update: {user.CompanyName}, {user.City}, {user.Country}");
-            var existingUser = await userAccountService.GetMemberByEmailAsync(user.Email);
+            var existingUser = await userAccountService.GetMemberByEmail(user.Email);
 
             // Update the fields
             existingUser.CompanyName = user.CompanyName;
             existingUser.City = user.City;
             existingUser.Country = user.Country;
 
-            await userAccountService.UpdateMemberAsync(existingUser);
-            Console.WriteLine("Profile updated successfully");
+            var success = await userAccountService.UpdateMemberProfile(existingUser);
 
-            user = await userAccountService.GetMemberByEmailAsync(user.Email);
-            Console.WriteLine($"After update: {user.CompanyName}, {user.City}, {user.Country}");
-            StateHasChanged(); 
+            if (success)
+            {
+                Console.WriteLine("Profile updated successfully");
+
+                user = await userAccountService.GetMemberByEmail(user.Email);
+                Console.WriteLine($"After update: {user.CompanyName}, {user.City}, {user.Country}");
+                StateHasChanged(); 
+            }
+            else
+            {
+                Console.WriteLine("Profile update failed");
+            }
         }
         catch (Exception ex)
         {
