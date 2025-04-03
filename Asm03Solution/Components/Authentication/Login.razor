@@ -2,135 +2,108 @@
 @using BusinessObject.RequestModel
 @using BusinessObject.Services.Instance
 @using DataAccess.Models
-@using Microsoft.AspNetCore.Components
-@using System.ComponentModel.DataAnnotations
 @inject IMemberService MemberService
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JSRuntime
 
-<PageTitle>Đăng nhập - Hệ thống quản lý</PageTitle>
+@if (_isProcessing)
+{
+    <div class="overlay position-fixed" style="top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.5); z-index: 1000;"></div>
+    <div class="loading-wrapper position-fixed d-flex justify-content-center align-items-center" style="top: 0; left: 0; right: 0; bottom: 0; z-index: 1001;">
+        <div class="loading-text fs-1 text-white">Đang đăng nhập...</div>
+    </div>
+}
 
-<div class="container min-vh-100 d-flex align-items-center justify-content-center py-5">
-    <div class="row justify-content-center w-100">
-        <div class="col-md-5">
-            <div class="card shadow-lg border-0">
-                <div class="card-header bg-primary text-white text-center py-4 border-0">
-                    <h3 class="mb-0">
-                        <i class="fas fa-user-circle fa-2x mb-3"></i>
-                        <div>Đăng nhập</div>
-                    </h3>
+<EditForm Model="_model" OnValidSubmit="LoginAsync" FormName="login-form">
+    <DataAnnotationsValidator />
+    <div class="container mt-5 d-flex justify-content-center">
+        <div class="card" style="width: 450px">
+            <div class="card-header bg-primary text-white">
+                <h2>Đăng nhập</h2>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <InputText @bind-Value="_model.Email" class="form-control" placeholder="Nhập email" />
+                    <ValidationMessage For="()=> _model.Email" />
                 </div>
-                <div class="card-body p-4">
-                    <EditForm Model="@loginModel" OnValidSubmit="HandleLogin" FormName="login-form">
-                        <DataAnnotationsValidator />
-
-                        <div class="form-floating mb-3">
-                            <InputText id="email" @bind-Value="loginModel.Email" class="form-control" placeholder="name@example.com" />
-                            <label for="email">
-                                <i class="fas fa-envelope me-2"></i>Email
-                            </label>
-                            <ValidationMessage For="@(() => loginModel.Email)" class="text-danger small" />
-                        </div>
-
-                        <div class="form-floating mb-4">
-                            <InputText id="password" @bind-Value="loginModel.Password" class="form-control" type="password" placeholder="Mật khẩu" />
-                            <label for="password">
-                                <i class="fas fa-lock me-2"></i>Mật khẩu
-                            </label>
-                            <ValidationMessage For="@(() => loginModel.Password)" class="text-danger small" />
-                        </div>
-
-                        @if (!string.IsNullOrEmpty(errorMessage))
-                        {
-                            <div class="alert alert-danger d-flex align-items-center mt-3" role="alert">
-                                <i class="fas fa-exclamation-circle me-2"></i>
-                                <div>@errorMessage</div>
-                            </div>
-                        }
-
-                        <div class="d-grid gap-2 mt-4">
-                            <button type="submit" class="btn btn-primary btn-lg" disabled="@isLoading">
-                                @if (isLoading)
-                                {
-                                    <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                                    <span>Đang đăng nhập...</span>
-                                }
-                                else
-                                {
-                                    <i class="fas fa-sign-in-alt me-2"></i>
-                                    <span>Đăng nhập</span>
-                                }
-                            </button>
-                        </div>
-
-                        <div class="text-center mt-4">
-                            <a href="/register" class="text-decoration-none">
-                                <i class="fas fa-user-plus me-2"></i>Chưa có tài khoản? Đăng ký
-                            </a>
-                        </div>
-                    </EditForm>
+                <div class="mb-3">
+                    <label class="form-label">Mật khẩu</label>
+                    <InputText type="password" @bind-Value="_model.Password" class="form-control" placeholder="Nhập mật khẩu" />
+                    <ValidationMessage For="()=> _model.Password" />
                 </div>
+
+                @if (!string.IsNullOrWhiteSpace(_error))
+                {
+                    <div class="alert alert-danger">@_error</div>
+                }
+            </div>
+            <div class="card-footer d-grid">
+                <button type="submit" class="btn btn-primary">Đăng nhập</button>
             </div>
         </div>
     </div>
-</div>
+</EditForm>
 
 @code {
-    private LoginRequestModel loginModel = new();
-    private string errorMessage = string.Empty;
-    private bool isLoading = false;
-    private bool isProcessing = false; 
+    private LoginRequestModel _model = new();
+    private bool _isProcessing = false;
+    private string? _error = null;
 
-    private async Task HandleLogin()
+    private async Task LoginAsync()
     {
-        // Ngăn xử lý nhiều lần khi nhấn nút nhiều lần
-        if (isProcessing) return;
-        
-        errorMessage = string.Empty;
-        isLoading = true;
-        isProcessing = true;
-
+        _error = null;
+        _isProcessing = true;
         try
         {
-            // Thêm một chút độ trễ để hiển thị loading spinner (tối thiểu 500ms)
-            await Task.Delay(500);
-
-            // Gọi API xác thực với LoginRequestModel
-            var member = await MemberService.AuthenticateAsync(loginModel);
-
-            if (member != null)
+            Console.WriteLine($"Đang xác thực với email: {_model.Email}");
+            
+            // Kiểm tra dữ liệu đầu vào
+            if (string.IsNullOrWhiteSpace(_model.Email) || string.IsNullOrWhiteSpace(_model.Password))
             {
-                try
-                {
-                    // Lưu thông tin người dùng vào localStorage
-                    await JSRuntime.InvokeVoidAsync("localStorage.setItem", "currentUser", 
-                        System.Text.Json.JsonSerializer.Serialize(new { 
-                            Id = member.MemberId,
-                            Email = member.Email,
-                            CompanyName = member.CompanyName
-                        }));
-
-                    // Chuyển hướng đến trang Product
-                    NavigationManager.NavigateTo("/product", forceLoad: true);
-                }
-                catch (Exception jsEx)
-                {
-                    errorMessage = "Lỗi lưu thông tin đăng nhập: " + jsEx.Message;
-                }
+                _error = "Vui lòng nhập đầy đủ email và mật khẩu";
+                _isProcessing = false;
+                return;
             }
-            else
+
+            // Gọi API xác thực
+            var member = await MemberService.AuthenticateAsync(_model);
+            Console.WriteLine($"Kết quả xác thực: {(member != null ? "Thành công" : "Thất bại")}");
+
+            if (member == null)
             {
-                errorMessage = "Email hoặc mật khẩu không đúng";
+                _error = "Email hoặc mật khẩu không đúng";
+                _isProcessing = false;
+                return;
+            }
+
+            // Đăng nhập thành công
+            try
+            {
+                Console.WriteLine("Lưu thông tin người dùng vào localStorage");
+                await JSRuntime.InvokeVoidAsync("localStorage.setItem", "currentUser", 
+                    System.Text.Json.JsonSerializer.Serialize(new { 
+                        Id = member.MemberId,
+                        Email = member.Email,
+                        CompanyName = member.CompanyName
+                    }));
+
+                Console.WriteLine("Chuyển hướng đến trang sản phẩm");
+                NavigationManager.NavigateTo("/product", forceLoad: true);
+            }
+            catch (Exception jsEx)
+            {
+                Console.WriteLine($"Lỗi JS: {jsEx.Message}");
+                _error = "Lỗi lưu thông tin đăng nhập: " + jsEx.Message;
+                _isProcessing = false;
             }
         }
         catch (Exception ex)
         {
-            errorMessage = $"Đăng nhập thất bại: {ex.Message}";
-        }
-        finally
-        {
-            isLoading = false;
-            isProcessing = false;
+            Console.WriteLine($"Exception: {ex.Message}");
+            Console.WriteLine($"StackTrace: {ex.StackTrace}");
+            _error = $"Lỗi: {ex.Message}";
+            _isProcessing = false;
         }
     }
-} 
+}
