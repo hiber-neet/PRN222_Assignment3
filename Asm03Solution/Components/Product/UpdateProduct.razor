@@ -122,7 +122,9 @@
     {
         try
         {
+
             categories = await CategoryService.GetAllCategoriesAsync();
+
         }
         catch (Exception ex)
         {
@@ -134,7 +136,9 @@
     {
         try
         {
+
             product =  ProductService.GetProductById(Id);
+
             if (product == null)
             {
                 errorMessages.Add($"No products found with ID {Id}.");
@@ -191,7 +195,9 @@
         
         try
         {
+
             await ProductService.UpdateProductAsync(product);
+
             NavigationManager.NavigateTo("/product");
         }
         catch (Exception ex)

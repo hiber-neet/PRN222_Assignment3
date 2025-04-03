@@ -31,6 +31,8 @@
                 <EditForm Model="@newProduct" OnSubmit="@HandleSubmit">
                     <DataAnnotationsValidator />
 
+
+
                     <div class="mb-3">
                         <label class="form-label">Product Name <span class="text-danger">*</span></label>
                         <InputText class="form-control" @bind-Value="newProduct.ProductName" />
@@ -100,7 +102,9 @@
     {
         try
         {
+
             categories = await CategoryService.GetAllCategoriesAsync();
+
         }
         catch (Exception ex)
         {
@@ -149,7 +153,9 @@
 
         try
         {
+
             await ProductService.AddProductAsync(newProduct);
+
             NavigationManager.NavigateTo("/product");
         }
         catch (Exception ex)

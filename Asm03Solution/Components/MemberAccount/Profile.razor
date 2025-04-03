@@ -4,7 +4,7 @@
 @using Microsoft.AspNetCore.Components
 @using BusinessObject.Services
 @using DataAccess.Models
- 
+@inject IHttpContextAccessor HttpContextAccessor
 @inject NavigationManager NavigationManager;
 @inject MemberService userAccountService;
 
@@ -64,7 +64,7 @@
             return;
         }
 
-        user = await userAccountService.GetMemberByEmail(email);
+        user = await userAccountService.GetMemberByEmailAsync(email);
     }
 
     protected async Task HandleValidSubmit()
@@ -78,27 +78,19 @@
         try
         {
             Console.WriteLine($"Before update: {user.CompanyName}, {user.City}, {user.Country}");
-            var existingUser = await userAccountService.GetMemberByEmail(user.Email);
+            var existingUser = await userAccountService.GetMemberByEmailAsync(user.Email);
 
             // Update the fields
             existingUser.CompanyName = user.CompanyName;
             existingUser.City = user.City;
             existingUser.Country = user.Country;
 
-            var success = await userAccountService.UpdateMemberProfile(existingUser);
+            await userAccountService.UpdateMemberAsync(existingUser);
+            Console.WriteLine("Profile updated successfully");
 
-            if (success)
-            {
-                Console.WriteLine("Profile updated successfully");
-
-                user = await userAccountService.GetMemberByEmail(user.Email);
-                Console.WriteLine($"After update: {user.CompanyName}, {user.City}, {user.Country}");
-                StateHasChanged(); 
-            }
-            else
-            {
-                Console.WriteLine("Profile update failed");
-            }
+            user = await userAccountService.GetMemberByEmailAsync(user.Email);
+            Console.WriteLine($"After update: {user.CompanyName}, {user.City}, {user.Country}");
+            StateHasChanged(); 
         }
         catch (Exception ex)
         {

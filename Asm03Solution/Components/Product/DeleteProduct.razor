@@ -81,7 +81,10 @@
     {
         try
         {
+
             product =  ProductService.GetProductById(Id);
+
+
             if (product == null)
             {
                 errorMessages.Add($"No products found with ID {Id}.");
@@ -99,7 +102,9 @@
         {
             if (product != null)
             {
+
                 await ProductService.DeleteProductAsync(Id);
+
                 NavigationManager.NavigateTo("/product");
             }
         }
