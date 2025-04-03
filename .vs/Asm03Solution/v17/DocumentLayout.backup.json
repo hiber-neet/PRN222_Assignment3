@@ -1,54 +1,126 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\",
+  "WorkspaceRootPath": "D:\\PRN222-as3\\PRN222_Assignment3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|c:\\users\\administrator\\desktop\\asm03solution\\dataaccess\\dataaccess.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\dataaccess.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|d:\\prn222-as3\\prn222_assignment3\\dataaccess\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|c:\\users\\administrator\\desktop\\asm03solution\\dataaccess\\ecommercecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\ecommercecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7F94ED49-6BF5-4BA4-B015-4C1912B7E30E}|BusinessObject\\BusinessObject.csproj|c:\\users\\administrator\\desktop\\asm03solution\\businessobject\\businessobject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{7F94ED49-6BF5-4BA4-B015-4C1912B7E30E}|BusinessObject\\BusinessObject.csproj|solutionrelative:businessobject\\businessobject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|c:\\users\\administrator\\desktop\\asm03solution\\asm03solution\\asm03solution.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\asm03solution.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|c:\\users\\administrator\\desktop\\asm03solution\\dataaccess\\models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|c:\\users\\administrator\\desktop\\asm03solution\\dataaccess\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|c:\\users\\administrator\\desktop\\asm03solution\\dataaccess\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|c:\\users\\administrator\\desktop\\asm03solution\\dataaccess\\models\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|d:\\prn222-as3\\prn222_assignment3\\dataaccess\\models\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\models\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|c:\\users\\administrator\\desktop\\asm03solution\\asm03solution\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|d:\\prn222-as3\\prn222_assignment3\\asm03solution\\components\\memberaccount\\profile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\memberaccount\\profile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|d:\\prn222-as3\\prn222_assignment3\\asm03solution\\components\\layout\\topnavbar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\layout\\topnavbar.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|d:\\prn222-as3\\prn222_assignment3\\asm03solution\\components\\login\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\login\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|d:\\prn222-as3\\prn222_assignment3\\asm03solution\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|d:\\prn222-as3\\prn222_assignment3\\asm03solution\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|c:\\users\\administrator\\desktop\\asm03solution\\asm03solution\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|d:\\prn222-as3\\prn222_assignment3\\asm03solution\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|d:\\prn222-as3\\prn222_assignment3\\asm03solution\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7F94ED49-6BF5-4BA4-B015-4C1912B7E30E}|BusinessObject\\BusinessObject.csproj|c:\\users\\administrator\\desktop\\asm03solution\\businessobject\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7F94ED49-6BF5-4BA4-B015-4C1912B7E30E}|BusinessObject\\BusinessObject.csproj|solutionrelative:businessobject\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|d:\\prn222-as3\\prn222_assignment3\\asm03solution\\components\\pages\\counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\pages\\counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|c:\\users\\administrator\\desktop\\asm03solution\\dataaccess\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7F94ED49-6BF5-4BA4-B015-4C1912B7E30E}|BusinessObject\\BusinessObject.csproj|d:\\prn222-as3\\prn222_assignment3\\businessobject\\services\\memberservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F94ED49-6BF5-4BA4-B015-4C1912B7E30E}|BusinessObject\\BusinessObject.csproj|solutionrelative:businessobject\\services\\memberservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|d:\\prn222-as3\\prn222_assignment3\\asm03solution\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|d:\\prn222-as3\\prn222_assignment3\\asm03solution\\wwwroot\\favicon.png||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\wwwroot\\favicon.png||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|d:\\prn222-as3\\prn222_assignment3\\asm03solution\\wwwroot\\bootstrap\\bootstrap.min.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\wwwroot\\bootstrap\\bootstrap.min.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|d:\\prn222-as3\\prn222_assignment3\\asm03solution\\wwwroot\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\wwwroot\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|d:\\prn222-as3\\prn222_assignment3\\dataaccess\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|d:\\prn222-as3\\prn222_assignment3\\asm03solution\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|d:\\prn222-as3\\prn222_assignment3\\dataaccess\\repositories\\memberrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repositories\\memberrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|d:\\prn222-as3\\prn222_assignment3\\asm03solution\\components\\routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|d:\\prn222-as3\\prn222_assignment3\\dataaccess\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|d:\\prn222-as3\\prn222_assignment3\\dataaccess\\ecommercecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\ecommercecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|d:\\prn222-as3\\prn222_assignment3\\dataaccess\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|d:\\prn222-as3\\prn222_assignment3\\asm03solution\\asm03solution.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\asm03solution.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|d:\\prn222-as3\\prn222_assignment3\\dataaccess\\models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\models\\orderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|d:\\prn222-as3\\prn222_assignment3\\asm03solution\\components\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|d:\\prn222-as3\\prn222_assignment3\\asm03solution\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|d:\\prn222-as3\\prn222_assignment3\\asm03solution\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|d:\\prn222-as3\\prn222_assignment3\\dataaccess\\migrations\\20250402112856_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\migrations\\20250402112856_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|d:\\prn222-as3\\prn222_assignment3\\asm03solution\\components\\layout\\mainlayout.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\layout\\mainlayout.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F94ED49-6BF5-4BA4-B015-4C1912B7E30E}|BusinessObject\\BusinessObject.csproj|d:\\prn222-as3\\prn222_assignment3\\businessobject\\businessobject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{7F94ED49-6BF5-4BA4-B015-4C1912B7E30E}|BusinessObject\\BusinessObject.csproj|solutionrelative:businessobject\\businessobject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,163 +130,370 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DataAccess",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\DataAccess.csproj",
-              "RelativeDocumentMoniker": "DataAccess\\DataAccess.csproj",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\DataAccess.csproj*",
-              "RelativeToolTip": "DataAccess\\DataAccess.csproj*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAnwAsAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-03-31T14:14:05.445Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "BusinessObject",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\BusinessObject\\BusinessObject.csproj",
-              "RelativeDocumentMoniker": "BusinessObject\\BusinessObject.csproj",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\BusinessObject\\BusinessObject.csproj",
-              "RelativeToolTip": "BusinessObject\\BusinessObject.csproj",
+              "DocumentIndex": 5,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "Asm03Solution\\Components\\Layout\\NavMenu.razor",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "Asm03Solution\\Components\\Layout\\NavMenu.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-03-31T14:14:03.485Z",
-              "EditorCaption": ""
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-02T09:39:21.49Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Asm03Solution",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\Asm03Solution\\Asm03Solution.csproj",
-              "RelativeDocumentMoniker": "Asm03Solution\\Asm03Solution.csproj",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\Asm03Solution\\Asm03Solution.csproj",
-              "RelativeToolTip": "Asm03Solution\\Asm03Solution.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-03-31T14:13:49.395Z",
+              "Title": "TopNavBar.razor",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\Layout\\TopNavBar.razor",
+              "RelativeDocumentMoniker": "Asm03Solution\\Components\\Layout\\TopNavBar.razor",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\Layout\\TopNavBar.razor",
+              "RelativeToolTip": "Asm03Solution\\Components\\Layout\\TopNavBar.razor",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAwwDQAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-02T09:38:51.872Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Profile.razor",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\MemberAccount\\Profile.razor",
+              "RelativeDocumentMoniker": "Asm03Solution\\Components\\MemberAccount\\Profile.razor",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\MemberAccount\\Profile.razor",
+              "RelativeToolTip": "Asm03Solution\\Components\\MemberAccount\\Profile.razor",
+              "ViewState": "AgIAADQAAAAAAAAAAAAwwAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-02T15:14:10.753Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Login.razor",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\Login\\Login.razor",
+              "RelativeDocumentMoniker": "Asm03Solution\\Components\\Login\\Login.razor",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\Login\\Login.razor",
+              "RelativeToolTip": "Asm03Solution\\Components\\Login\\Login.razor",
+              "ViewState": "AgIAADUAAAAAAAAAAAAwwEkAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-02T13:54:04.704Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\Asm03Solution\\Program.cs",
-              "RelativeDocumentMoniker": "Asm03Solution\\Program.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\Asm03Solution\\Program.cs",
-              "RelativeToolTip": "Asm03Solution\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T18:41:27.698Z",
-              "EditorCaption": ""
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\appsettings.json",
+              "RelativeDocumentMoniker": "Asm03Solution\\appsettings.json",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\appsettings.json",
+              "RelativeToolTip": "Asm03Solution\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-29T18:41:13.169Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ECommerceContext.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\ECommerceContext.cs",
-              "RelativeDocumentMoniker": "DataAccess\\ECommerceContext.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\ECommerceContext.cs",
-              "RelativeToolTip": "DataAccess\\ECommerceContext.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T18:40:43.093Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "Member.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\Models\\Member.cs",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\DataAccess\\Models\\Member.cs",
               "RelativeDocumentMoniker": "DataAccess\\Models\\Member.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\Models\\Member.cs",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\DataAccess\\Models\\Member.cs",
               "RelativeToolTip": "DataAccess\\Models\\Member.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAQwBEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-29T17:01:34.412Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Category.cs",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\DataAccess\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Models\\Category.cs",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\DataAccess\\Models\\Category.cs",
+              "RelativeToolTip": "DataAccess\\Models\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T17:00:21.884Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "Asm03Solution\\Components\\Layout\\MainLayout.razor",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "Asm03Solution\\Components\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-02T09:34:34.059Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "Order.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\Models\\Order.cs",
-              "RelativeDocumentMoniker": "DataAccess\\Models\\Order.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\Models\\Order.cs",
-              "RelativeToolTip": "DataAccess\\Models\\Order.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAmwB4AAAAqAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Program.cs",
+              "RelativeDocumentMoniker": "Asm03Solution\\Program.cs",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Program.cs",
+              "RelativeToolTip": "Asm03Solution\\Program.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAABUAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T17:01:11.183Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Product.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\Models\\Product.cs",
-              "RelativeDocumentMoniker": "DataAccess\\Models\\Product.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\Models\\Product.cs",
-              "RelativeToolTip": "DataAccess\\Models\\Product.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T17:00:37.207Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "OrderDetail.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\Models\\OrderDetail.cs",
-              "RelativeDocumentMoniker": "DataAccess\\Models\\OrderDetail.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\Models\\OrderDetail.cs",
-              "RelativeToolTip": "DataAccess\\Models\\OrderDetail.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAIwBMAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T17:00:55.697Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-29T18:41:27.698Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\Asm03Solution\\appsettings.json",
-              "RelativeDocumentMoniker": "Asm03Solution\\appsettings.json",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\Asm03Solution\\appsettings.json",
-              "RelativeToolTip": "Asm03Solution\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-29T18:41:13.169Z",
-              "EditorCaption": ""
+              "Title": "Counter.razor",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\Pages\\Counter.razor",
+              "RelativeDocumentMoniker": "Asm03Solution\\Components\\Pages\\Counter.razor",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\Pages\\Counter.razor",
+              "RelativeToolTip": "Asm03Solution\\Components\\Pages\\Counter.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-03T06:00:14.396Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\BusinessObject\\Class1.cs",
-              "RelativeDocumentMoniker": "BusinessObject\\Class1.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\BusinessObject\\Class1.cs",
-              "RelativeToolTip": "BusinessObject\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "MemberService.cs",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\BusinessObject\\Services\\MemberService.cs",
+              "RelativeDocumentMoniker": "BusinessObject\\Services\\MemberService.cs",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\BusinessObject\\Services\\MemberService.cs",
+              "RelativeToolTip": "BusinessObject\\Services\\MemberService.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAACUAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T17:03:26.864Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-02T11:40:14.047Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "bootstrap.min.css",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\wwwroot\\bootstrap\\bootstrap.min.css",
+              "RelativeDocumentMoniker": "Asm03Solution\\wwwroot\\bootstrap\\bootstrap.min.css",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\wwwroot\\bootstrap\\bootstrap.min.css",
+              "RelativeToolTip": "Asm03Solution\\wwwroot\\bootstrap\\bootstrap.min.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-04-03T05:58:18.257Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "favicon.png - PNG [32x32, 32 bit, PNG]",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\wwwroot\\favicon.png",
+              "RelativeDocumentMoniker": "Asm03Solution\\wwwroot\\favicon.png",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\wwwroot\\favicon.png - PNG [32x32, 32 bit, PNG]",
+              "RelativeToolTip": "Asm03Solution\\wwwroot\\favicon.png - PNG [32x32, 32 bit, PNG]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2025-04-03T05:58:23.017Z",
+              "EditorCaption": " - PNG [32x32, 32 bit, PNG]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "Category.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\Models\\Category.cs",
-              "RelativeDocumentMoniker": "DataAccess\\Models\\Category.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution\\DataAccess\\Models\\Category.cs",
-              "RelativeToolTip": "DataAccess\\Models\\Category.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAIBJwAwAAAArAAAAAAAAAA==",
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Asm03Solution\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Asm03Solution\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-03T05:59:19.503Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\DataAccess\\Repositories\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Repositories\\GenericRepository.cs",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\DataAccess\\Repositories\\GenericRepository.cs",
+              "RelativeToolTip": "DataAccess\\Repositories\\GenericRepository.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAuwEgAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T17:00:21.884Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-02T11:42:45.841Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "MemberRepository.cs",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\DataAccess\\Repositories\\MemberRepository.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Repositories\\MemberRepository.cs",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\DataAccess\\Repositories\\MemberRepository.cs",
+              "RelativeToolTip": "DataAccess\\Repositories\\MemberRepository.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAuwC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T13:45:53.085Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "app.css",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\wwwroot\\app.css",
+              "RelativeDocumentMoniker": "Asm03Solution\\wwwroot\\app.css",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\wwwroot\\app.css",
+              "RelativeToolTip": "Asm03Solution\\wwwroot\\app.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-04-02T09:43:46.199Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\_Imports.razor",
+              "RelativeDocumentMoniker": "Asm03Solution\\Components\\_Imports.razor",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\_Imports.razor",
+              "RelativeToolTip": "Asm03Solution\\Components\\_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-02T08:50:11.038Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Routes.razor",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\Routes.razor",
+              "RelativeDocumentMoniker": "Asm03Solution\\Components\\Routes.razor",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\Routes.razor",
+              "RelativeToolTip": "Asm03Solution\\Components\\Routes.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-02T11:58:51.094Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ECommerceContext.cs",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\DataAccess\\ECommerceContext.cs",
+              "RelativeDocumentMoniker": "DataAccess\\ECommerceContext.cs",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\DataAccess\\ECommerceContext.cs",
+              "RelativeToolTip": "DataAccess\\ECommerceContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T18:40:43.093Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Product.cs",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\DataAccess\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Models\\Product.cs",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\DataAccess\\Models\\Product.cs",
+              "RelativeToolTip": "DataAccess\\Models\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T17:00:37.207Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Order.cs",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\DataAccess\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Models\\Order.cs",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\DataAccess\\Models\\Order.cs",
+              "RelativeToolTip": "DataAccess\\Models\\Order.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAUwB8AAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T17:01:11.183Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Asm03Solution.csproj",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Asm03Solution.csproj",
+              "RelativeDocumentMoniker": "Asm03Solution\\Asm03Solution.csproj",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Asm03Solution.csproj",
+              "RelativeToolTip": "Asm03Solution\\Asm03Solution.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-31T14:13:49.395Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "OrderDetail.cs",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\DataAccess\\Models\\OrderDetail.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Models\\OrderDetail.cs",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\DataAccess\\Models\\OrderDetail.cs",
+              "RelativeToolTip": "DataAccess\\Models\\OrderDetail.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAIwAgAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-29T17:00:55.697Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\ViewModels\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "Asm03Solution\\Components\\ViewModels\\LoginViewModel.cs",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\ViewModels\\LoginViewModel.cs",
+              "RelativeToolTip": "Asm03Solution\\Components\\ViewModels\\LoginViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T13:52:16.219Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Home.razor",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "Asm03Solution\\Components\\Pages\\Home.razor",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "Asm03Solution\\Components\\Pages\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-02T11:58:54.854Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "App.razor",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\App.razor",
+              "RelativeDocumentMoniker": "Asm03Solution\\Components\\App.razor",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\App.razor",
+              "RelativeToolTip": "Asm03Solution\\Components\\App.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-02T08:49:00.678Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "20250402112856_InitialCreate.cs",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\DataAccess\\Migrations\\20250402112856_InitialCreate.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Migrations\\20250402112856_InitialCreate.cs",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\DataAccess\\Migrations\\20250402112856_InitialCreate.cs",
+              "RelativeToolTip": "DataAccess\\Migrations\\20250402112856_InitialCreate.cs",
+              "ViewState": "AgIAAIIAAAAAAAAAAAAcwI4AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T11:28:56.942Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "MainLayout.razor.css",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\Layout\\MainLayout.razor.css",
+              "RelativeDocumentMoniker": "Asm03Solution\\Components\\Layout\\MainLayout.razor.css",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\Asm03Solution\\Components\\Layout\\MainLayout.razor.css",
+              "RelativeToolTip": "Asm03Solution\\Components\\Layout\\MainLayout.razor.css",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAAAGEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-04-02T09:53:32.774Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "BusinessObject.csproj",
+              "DocumentMoniker": "D:\\PRN222-as3\\PRN222_Assignment3\\BusinessObject\\BusinessObject.csproj",
+              "RelativeDocumentMoniker": "BusinessObject\\BusinessObject.csproj",
+              "ToolTip": "D:\\PRN222-as3\\PRN222_Assignment3\\BusinessObject\\BusinessObject.csproj",
+              "RelativeToolTip": "BusinessObject\\BusinessObject.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-31T14:14:03.485Z"
             }
           ]
         }

@@ -1,0 +1,54 @@
+﻿
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+
+<div class="container">
+    <header class="d-flex justify-content-md-between justify-content-center flex-wrap py-3">
+        <NavLink href="/" class="text-light text-decoration-none fs-4 fw-bold">Ecommerce Blazor</NavLink>
+        <ul class="nav">
+            <li><NavLink href="/" class="link-light nav-link">Home</NavLink></li>
+            <li><NavLink href="/about" class="link-light nav-link">About</NavLink></li>
+            <li><NavLink href="/member-management" class="link-light nav-link">Member Management</NavLink></li>
+            <li><NavLink href="/product-management" class="link-light nav-link">Product Management</NavLink></li>
+            <li><NavLink href="/order-management" class="link-light nav-link">Order Management</NavLink></li>
+        </ul>
+
+        <div class="text-end">
+            @if (IsUserLoggedIn)
+            {
+                <button class="btn btn-warning" @onclick="Logout">LogOut</button>
+            }
+            else
+            {
+                <NavLink href="/Login" class="btn btn-warning">LogIn</NavLink>
+            }
+        </div>
+    </header>
+</div>
+
+@code {
+    private bool IsUserLoggedIn => !string.IsNullOrEmpty(HttpContextAccessor.HttpContext?.Session.GetString("Email"));
+
+    private async Task Logout()
+    {
+        Console.WriteLine("call logout here baby");
+
+        try
+        {
+            // Xóa toàn bộ session
+            HttpContextAccessor.HttpContext?.Session.Clear();
+
+            // Cập nhật lại giao diện
+            StateHasChanged();
+
+            // Điều hướng về trang Login
+            NavigationManager.NavigateTo("/Login", forceLoad: true);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Đăng xuất thất bại: " + ex.Message);
+        }
+    }
+}

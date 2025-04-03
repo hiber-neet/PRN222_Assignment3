@@ -1,6 +1,9 @@
 using Asm03Solution.Components;
+using BusinessObject.Services;
 using DataAccess;
 using Microsoft.EntityFrameworkCore;
+using Asm03Solution.DataAccess.Repositories;
+using DataAccess.Repositories;
 
 namespace Asm03Solution
 {
@@ -15,6 +18,20 @@ namespace Asm03Solution
                 .AddInteractiveServerComponents();
             builder.Services.AddDbContext<ECommerceContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            //cau hinh di repo+service
+			builder.Services.AddScoped<MemberRepository>();
+			builder.Services.AddScoped<MemberService>();
+
+            //cau hinh session
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -26,8 +43,8 @@ namespace Asm03Solution
             }
 
             app.UseHttpsRedirection();
-
-            app.UseStaticFiles();
+			app.UseSession(); // Enable session handling
+			app.UseStaticFiles();
             app.UseAntiforgery();
 
             app.MapRazorComponents<App>()
