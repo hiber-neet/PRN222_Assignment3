@@ -83,7 +83,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         var email = HttpContextAccessor.HttpContext?.Session.GetString("Email");
-        var existingUser = await userAccountService.GetMemberByEmail(email);
+        var existingUser = await userAccountService.GetMemberByEmailAsync(email);
         if (string.IsNullOrEmpty(email))
         {
             NavigationManager.NavigateTo("/Login");

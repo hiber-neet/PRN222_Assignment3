@@ -121,7 +121,7 @@
     {
         try
         {
-            categories = await UnitOfWork.Categories.GetAllAsync();
+            categories = await UnitOfWork.Repository<Category>().GetAllAsync();
         }
         catch (Exception ex)
         {
@@ -133,7 +133,7 @@
     {
         try
         {
-            product = await UnitOfWork.Products.GetByIdAsync(Id);
+            product = await UnitOfWork.Repository<Product>().GetByIdAsync(Id);
             if (product == null)
             {
                 errorMessages.Add($"Product with ID {Id} not found.");
@@ -187,8 +187,8 @@
         // Nếu không có lỗi, cập nhật sản phẩm
         try
         {
-            UnitOfWork.Products.Update(product);
-            await UnitOfWork.CompleteAsync();
+            UnitOfWork.Repository<Product>().Update(product);
+            await UnitOfWork.CommitAsync();
             NavigationManager.NavigateTo("/product");
         }
         catch (Exception ex)

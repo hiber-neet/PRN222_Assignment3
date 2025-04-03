@@ -81,7 +81,7 @@
     {
         try
         {
-            product = await UnitOfWork.Products.GetByIdAsync(Id);
+            product = await UnitOfWork.Repository<Product>().GetByIdAsync(Id);
             if (product == null)
             {
                 errorMessages.Add($"Product with ID {Id} not found.");
@@ -99,8 +99,8 @@
         {
             if (product != null)
             {
-                UnitOfWork.Products.Remove(product);
-                await UnitOfWork.CompleteAsync();
+                UnitOfWork.Repository<Product>().Remove(product);
+                await UnitOfWork.CommitAsync();
                 NavigationManager.NavigateTo("/product");
             }
         }

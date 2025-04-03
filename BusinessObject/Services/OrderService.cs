@@ -29,7 +29,7 @@ namespace BusinessObject.Services
         {
             Order order = new();
             order.OrderDate = DateTime.Now;
-            Member member = await _memberService.GetMemberByEmail(email);
+            Member member = await _memberService.GetMemberByEmailAsync(email);
             order.MemberId = member.MemberId;
             int orderId = await _orderRepository.CreateOrderAsync(order);
             OrderDetail orderDetail = new();
