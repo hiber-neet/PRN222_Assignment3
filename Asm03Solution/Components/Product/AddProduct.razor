@@ -1,10 +1,11 @@
 ﻿@page "/product/add"
 @rendermode InteractiveServer
 @using DataAccess.Models
-@using DataAccess.Repositories
+@using BusinessObject.Services
 @using Microsoft.AspNetCore.Components
 @using Microsoft.AspNetCore.Components.Forms
-@inject IUnitOfWork UnitOfWork
+@inject ProductService ProductService
+@inject CategoryService CategoryService
 @inject NavigationManager NavigationManager
 
 <PageTitle>Add Product</PageTitle>
@@ -29,7 +30,6 @@
             <div class="card-body">
                 <EditForm Model="@newProduct" OnSubmit="@HandleSubmit">
                     <DataAnnotationsValidator />
-                    
 
                     <div class="mb-3">
                         <label class="form-label">Product Name <span class="text-danger">*</span></label>
@@ -100,19 +100,19 @@
     {
         try
         {
-            categories = await UnitOfWork.Categories.GetAllAsync();
+            categories = await CategoryService.GetAllCategoriesAsync();
         }
         catch (Exception ex)
         {
-            errorMessages.Add($"Error loading categories: {ex.Message}");
+            errorMessages.Add($"Error loading product: {ex.Message}");
         }
     }
 
     private async Task HandleSubmit(EditContext editContext)
     {
-        errorMessages.Clear(); // Xóa các lỗi cũ trước khi kiểm tra
+        errorMessages.Clear();
 
-        // Kiểm tra validation từ DataAnnotations
+        
         if (!editContext.Validate())
         {
             var messages = editContext.GetValidationMessages();
@@ -120,22 +120,22 @@
             return;
         }
 
-        // Kiểm tra các điều kiện bổ sung
+        
         if (string.IsNullOrEmpty(newProduct.ProductName))
         {
-            errorMessages.Add("Product Name cannot be empty.");
+            errorMessages.Add("Product name cannot be empty.");
         }
         if (string.IsNullOrEmpty(newProduct.Weight))
         {
-            errorMessages.Add("Product Weight cannot be empty.");
+            errorMessages.Add("Product weight cannot be empty.");
         }
         if (newProduct.UnitPrice <= 0)
         {
-            errorMessages.Add("Unit Price must be greater than 0.");
+            errorMessages.Add("Unit price must be greater than 0.");
         }
         if (newProduct.UnitsInStock <= 0)
         {
-            errorMessages.Add("Units In Stock must be greater than 0.");
+            errorMessages.Add("Inventory quantity must be greater than 0.");
         }
         if (newProduct.CategoryId == 0)
         {
@@ -149,20 +149,19 @@
 
         try
         {
-            await UnitOfWork.Products.AddAsync(newProduct);
-            await UnitOfWork.CompleteAsync();
+            await ProductService.AddProductAsync(newProduct);
             NavigationManager.NavigateTo("/product");
         }
         catch (Exception ex)
         {
-            errorMessages.Add($"Error adding product: {ex.Message}");
+            errorMessages.Add($"Error add product: {ex.Message}");
         }
     }
 
     private void ClearForm()
     {
-        newProduct = new Product(); // Đặt lại đối tượng về giá trị mặc định
-        errorMessages.Clear(); // Xóa các thông báo lỗi
-        StateHasChanged(); // Cập nhật UI
+        newProduct = new Product(); 
+        errorMessages.Clear(); 
+        StateHasChanged(); 
     }
 }
