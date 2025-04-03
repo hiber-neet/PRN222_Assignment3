@@ -1,0 +1,100 @@
+﻿@page "/orderhistory"
+@using BusinessObject.Services
+@using DataAccess.Models
+@rendermode InteractiveServer
+@inject NavigationManager NavigationManager;
+@inject OrderService orderService;
+@inject IHttpContextAccessor HttpContextAccessor;
+@inject MemberService userAccountService;
+
+<h3>Order History</h3>
+
+@if (orders == null)
+{
+    <p>Loading...</p>
+}
+else if (!orders.Any())
+{
+    <p>No orders found.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Order Date</th>
+                <th>Required Date</th>
+                <th>Shipped Date</th>
+                <th>Freight</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in orders)
+            {
+                <tr>
+                    <td>@order.OrderDate</td>
+                    <td>@order.RequiredDate</td>
+                    <td>@order.ShippedDate</td>
+                    <td>@order.Freight</td>
+                    <td>
+                        <button class="btn btn-info" @onclick="() => ToggleOrderDetails(order.OrderId)">
+                            @((expandedOrderId == order.OrderId) ? "Hide" : "View")
+                        </button>
+                    </td>
+                </tr>
+                @if (expandedOrderId == order.OrderId)
+                {
+                    <tr>
+                        <td colspan="6">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Product Name</th>
+                                        <th>Unit Price</th>
+                                        <th>Quantity</th>
+                                        <th>Discount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var detail in order.OrderDetails)
+                                    {
+                                        <tr>
+                                            <td>@detail.Product.ProductName</td>
+                                            <td>@detail.UnitPrice</td>
+                                            <td>@detail.Quantity</td>
+                                            <td>@detail.Discount</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Order>? orders;
+    private int? expandedOrderId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var email = HttpContextAccessor.HttpContext?.Session.GetString("Email");
+        var existingUser = await userAccountService.GetMemberByEmail(email);
+        if (string.IsNullOrEmpty(email))
+        {
+            NavigationManager.NavigateTo("/Login");
+            return;
+        }
+
+        orders = await orderService.GetOrdersByMemberIdAsync(existingUser.MemberId);
+    }
+
+    private void ToggleOrderDetails(int orderId)
+    {
+        expandedOrderId = expandedOrderId == orderId ? null : orderId;
+    }
+}

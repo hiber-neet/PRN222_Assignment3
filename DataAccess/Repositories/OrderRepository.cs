@@ -1,4 +1,6 @@
+
 ﻿using DataAccess.Models;
+using DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
+
     public class OrderRepository
     {
         private readonly ECommerceContext _context;
@@ -23,13 +26,36 @@ namespace DataAccess.Repositories
             await _context.SaveChangesAsync();
             return order.OrderId;
         }
-
         public async Task<Order> GetOrderByIdAsync(int id)
         {
             return await _context.Orders
                 .Include(o => o.OrderDetails)
                 .ThenInclude(od => od.Product)
                 .FirstOrDefaultAsync(o => o.OrderId == id);
+        }
+        public async Task<List<Order>> GetAllOrder()
+        {
+            return await _context.Orders.ToListAsync();
+        }
+
+
+        public async Task<List<Order>> GetOrdersByMemberId(int memberId)
+        {
+            return await _context.Orders
+                .Include(o => o.OrderDetails)
+                .ThenInclude(od => od.Product)
+                .Where(o => o.MemberId == memberId)
+                .ToListAsync();
+        }
+
+        public async Task<List<Order>> GetOrdersByPeriod(DateTime startDate, DateTime endDate)
+        {
+            return await _context.Orders
+                .Include(o => o.OrderDetails)
+                .ThenInclude(od => od.Product)
+                .Where(o => o.OrderDate >= startDate && o.OrderDate <= endDate)
+                .OrderByDescending(o => o.OrderDate)
+                .ToListAsync();
         }
     }
 }

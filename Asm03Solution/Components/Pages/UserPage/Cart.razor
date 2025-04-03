@@ -68,7 +68,6 @@
     private List<CartItem> CartItems;
     public void BuyProduct(int productId, int quantity)
     {
-
         NavigationManager.NavigateTo($"/user/buy?productid={productId}&quantity={quantity}");
     }
     protected override async Task OnAfterRenderAsync(bool render)

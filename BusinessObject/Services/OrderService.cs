@@ -1,5 +1,7 @@
+
 ﻿using DataAccess.Models;
 using DataAccess.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,18 +13,24 @@ namespace BusinessObject.Services
     public class OrderService
     {
         private readonly OrderRepository _orderRepository;
+
         private readonly OrderDetailRepository _orderDetailRepository;
-        public OrderService(OrderRepository orderRepository, OrderDetailRepository orderDetailRepository)
+        private readonly MemberService _memberService;
+        public OrderService(OrderRepository orderRepository, OrderDetailRepository orderDetailRepository,
+            MemberService memberService)
         {
             _orderRepository = orderRepository;
             _orderDetailRepository = orderDetailRepository;
+            _memberService = memberService;
+           
         }
 
         public async Task CreateOrderAsync(Product product, int quantity, string email)
         {
             Order order = new();
             order.OrderDate = DateTime.Now;
-            order.MemberId = 1;
+            Member member = await _memberService.GetMemberByEmail(email);
+            order.MemberId = member.MemberId;
             int orderId = await _orderRepository.CreateOrderAsync(order);
             OrderDetail orderDetail = new();
             orderDetail.OrderId = orderId;
@@ -37,5 +45,20 @@ namespace BusinessObject.Services
         {
             return await _orderRepository.GetOrderByIdAsync(id);
         }
-    }   
+        public OrderService(OrderRepository orderRepository)
+        {
+            _orderRepository = orderRepository;
+        }
+
+        public async Task<List<Order>> GetOrdersByPeriodAsync(DateTime startDate, DateTime endDate)
+        {
+            return await _orderRepository.GetOrdersByPeriod(startDate, endDate);
+        }
+
+        public async Task<List<Order>> GetOrdersByMemberIdAsync(int memberId)
+        {
+            return await _orderRepository.GetOrdersByMemberId(memberId);
+        }
+    }
+
 }

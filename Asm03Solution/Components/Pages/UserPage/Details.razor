@@ -48,7 +48,6 @@
     private int quantity { get; set; }
     public async Task BuyProduct(int productId){
         string email = HttpContextAccessor.HttpContext?.Session.GetString("Email");
-        
         Product tmp = productService.GetProductById(ProductId);
         await orderService.CreateOrderAsync(tmp, quantity, email);
         NavigationManager.NavigateTo("/user/products");

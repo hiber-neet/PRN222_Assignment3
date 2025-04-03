@@ -1,3 +1,4 @@
+
 ﻿using DataAccess.Models;
 using DataAccess.Repositories;
 using System;
@@ -31,5 +32,12 @@ namespace BusinessObject.Services
         {
             return _productRepository.GetProductById(id);
         }
-    }
+    
+
+		public List<Product> SearchProducts(string keyword, decimal? price)
+		{
+			return _productRepository.SearchProducts(keyword, price);
+		}
+	}
+
 }

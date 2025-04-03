@@ -1,0 +1,54 @@
+﻿@page "/searchproduct"
+@using DataAccess.Models
+@using BusinessObject.Services
+@inject ProductService ProductService
+@rendermode InteractiveServer
+
+
+
+<h3 class="text-2xl font-semibold mb-4 mt-5"> Search Products</h3>
+
+<div class="flex flex-col md:flex-row items-center gap-4">
+    <input @bind="searchKeyword" placeholder="Enter product name..."
+           class="border rounded-lg p-2 w-full md:w-1/3" />
+
+    <input @bind="searchPrice" type="number" placeholder="Enter price..."
+           class="border rounded-lg p-2 w-full md:w-1/4" />
+
+    <button @onclick="Search"
+            class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg btn btn-primary">
+        Search
+    </button>
+</div>
+
+@if (products != null && products.Count > 0)
+{
+    <div class="mt-10">
+        <ul class="border border-gray-300 rounded-lg p-4 bg-gray-50 shadow list-none">
+            @foreach (var product in products)
+            {
+                <li class="py-2 border-b last:border-none">
+                    <span class="font-semibold">@product.ProductName</span>
+                    - 💲<span class="text-green-600">@product.UnitPrice</span>
+                </li>
+            }
+        </ul>
+    </div>
+}
+else if (searched)
+{
+    <p class="text-red-500 mt-4"> No products found.</p>
+}
+
+@code {
+    private string searchKeyword = "";
+    private decimal? searchPrice;
+    private List<Product> products = new List<Product>();
+    private bool searched = false;
+
+    private void Search()
+    {
+        products = ProductService.SearchProducts(searchKeyword, searchPrice);
+        searched = true;
+    }
+}
