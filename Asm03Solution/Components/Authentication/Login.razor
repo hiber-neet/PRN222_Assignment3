@@ -7,6 +7,7 @@
 @inject IMemberService MemberService
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JSRuntime
+@rendermode InteractiveServer
 
 <PageTitle>Đăng nhập - Hệ thống quản lý</PageTitle>
 
@@ -76,7 +77,8 @@
 </div>
 
 @code {
-    private LoginRequestModel loginModel = new();
+    [SupplyParameterFromForm]
+    public LoginRequestModel loginModel { get; set; } = new();
     private string errorMessage = string.Empty;
     private bool isLoading = false;
     private bool isProcessing = false; 
@@ -92,8 +94,7 @@
 
         try
         {
-            // Thêm một chút độ trễ để hiển thị loading spinner (tối thiểu 500ms)
-            await Task.Delay(500);
+      
 
             // Gọi API xác thực với LoginRequestModel
             var member = await MemberService.AuthenticateAsync(loginModel);
@@ -111,7 +112,7 @@
                         }));
 
                     // Chuyển hướng đến trang Product
-                    NavigationManager.NavigateTo("/product", forceLoad: true);
+                    NavigationManager.NavigateTo("/");
                 }
                 catch (Exception jsEx)
                 {

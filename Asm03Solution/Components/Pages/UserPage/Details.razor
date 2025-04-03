@@ -1,0 +1,66 @@
+﻿@page "/user/buy"
+@using Microsoft.EntityFrameworkCore
+@using DataAccess.Models
+@using BusinessObject.Services
+@inject NavigationManager NavigationManager
+@inject ProductService productService
+@inject OrderService orderService
+@inject IHttpContextAccessor HttpContextAccessor;
+@rendermode InteractiveServer
+<PageTitle>Details</PageTitle>
+
+<h1>Details</h1>
+
+<div>
+    <h2>Product</h2>
+    <hr />
+    @if (product is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else {
+        <dl class="row">
+            <dt class="col-sm-2">Category Name</dt>
+            <dd class="col-sm-10">@product.Category.CategoryName</dd>
+            <dt class="col-sm-2">Product Name</dt>
+            <dd class="col-sm-10">@product.ProductName</dd>
+            <dt class="col-sm-2">Weight</dt>
+            <dd class="col-sm-10">@product.Weight</dd>
+            <dt class="col-sm-2">UnitPrice</dt>
+            <dd class="col-sm-10">@product.UnitPrice</dd>
+            <dt class="col-sm-2">UnitsInStock</dt>
+            <dd class="col-sm-10">@product.UnitsInStock</dd>
+        </dl>
+        <div>
+            <button @onclick="() => BuyProduct(product.ProductId)">Buy</button>
+            <a href="@($"/user/products")">Back to List</a>
+        </div>
+    }
+</div>
+
+@code {
+    private Product? product;
+    [CascadingParameter]
+    public HttpContext? HttpContext { get; set; }
+    [SupplyParameterFromQuery]
+    private int ProductId { get; set; }
+    [SupplyParameterFromQuery]
+    private int quantity { get; set; }
+    public async Task BuyProduct(int productId){
+        string email = HttpContextAccessor.HttpContext?.Session.GetString("Email");
+        
+        Product tmp = productService.GetProductById(ProductId);
+        await orderService.CreateOrderAsync(tmp, quantity, email);
+        NavigationManager.NavigateTo("/user/products");
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        product = productService.GetProductById(ProductId);
+
+        if (product is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+}

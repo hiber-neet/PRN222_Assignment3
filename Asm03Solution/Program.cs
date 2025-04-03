@@ -52,6 +52,10 @@ namespace Asm03Solution
             // Register DbContext
             builder.Services.AddDbContext<ECommerceContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddQuickGridEntityFrameworkAdapter();
+
+            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
                 
             // Register Repositories and Unit of Work
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
@@ -59,7 +63,23 @@ namespace Asm03Solution
             
             // Register Services
             builder.Services.AddScoped<IMemberService, MemberService>();
-            
+            builder.Services.AddScoped<CategoryRepository>();
+            builder.Services.AddScoped<CategoryService>();
+            builder.Services.AddScoped<ProductRepository>();
+            builder.Services.AddScoped<ProductService>();
+            builder.Services.AddScoped<CartService>();
+            builder.Services.AddScoped<OrderRepository>();
+            builder.Services.AddScoped<OrderDetailRepository>();
+            builder.Services.AddScoped<OrderService>();
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30); // Thời gian hết hạn session
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+            builder.Services.AddHttpContextAccessor();
             var app = builder.Build();
 
             // Initialize and seed the database
@@ -79,13 +99,14 @@ namespace Asm03Solution
 
             // Sử dụng nén response
             app.UseResponseCompression();
-            
+            app.UseSession();
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
+    app.UseMigrationsEndPoint();
             }
             else
             {
@@ -101,7 +122,7 @@ namespace Asm03Solution
             
             // Map controllers
             app.MapControllers();
-
+          
             app.MapRazorComponents<App>()
                 .AddInteractiveServerRenderMode();
 

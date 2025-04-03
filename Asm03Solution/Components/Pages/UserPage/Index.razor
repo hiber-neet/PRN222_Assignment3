@@ -1,0 +1,126 @@
+﻿@page "/user/products"
+@using Microsoft.EntityFrameworkCore
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using DataAccess.Models
+@using DataAccess
+@using BusinessObject.Services
+@using System.Text.Json
+@inject ProductService productService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+@rendermode InteractiveServer
+<PageTitle>User</PageTitle>
+
+<div style="display: flex; justify-content: space-between">
+    <h1>Welcome</h1>
+    <NavLink href="/cart">Cart</NavLink>
+</div>
+
+@if (Products == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+
+    <table class="table" style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin: 20px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <thead>
+            <tr style="background-color: #343a40; color: white;">
+                <th style="padding: 12px 15px; text-align: left; border-bottom: 2px solid #dee2e6;">Product Name</th>
+                <th style="padding: 12px 15px; text-align: left; border-bottom: 2px solid #dee2e6;">Weight</th>
+                <th style="padding: 12px 15px; text-align: left; border-bottom: 2px solid #dee2e6;">Unit Price</th>
+                <th style="padding: 12px 15px; text-align: left; border-bottom: 2px solid #dee2e6;">Units In Stock</th>
+                <th style="padding: 12px 15px; text-align: left; border-bottom: 2px solid #dee2e6;">Action</th>
+                <th style="padding: 12px 15px; text-align: left; border-bottom: 2px solid #dee2e6;">Buy</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Products)
+            {
+                <tr style="border-bottom: 1px solid #dddddd;">
+                    <td style="padding: 12px 15px;">@product.ProductName</td>
+                    <td style="padding: 12px 15px;">@product.Weight</td>
+                    <td style="padding: 12px 15px;">@product.UnitPrice.ToString("C")</td>
+                    <td style="padding: 12px 15px;">@product.UnitsInStock</td>
+                    <td style="padding: 12px 15px;">
+                        <button @onclick="() => AddToCart(product)"
+                        style="background-color: #007bff; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; transition: background-color 0.3s;"
+                        onmouseover="this.style.backgroundColor='#0069d9'"
+                        onmouseout="this.style.backgroundColor='#007bff'">
+                            Add To Cart
+                        </button>
+                    </td>
+                    <td style="padding: 12px 15px;">
+                        <button type="submit" @onclick="() => BuyProduct(product.ProductId)"
+                        style="background-color: #28a745; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; transition: background-color 0.3s;"
+                        onmouseover="this.style.backgroundColor='#218838'"
+                        onmouseout="this.style.backgroundColor='#28a745'">
+                            Buy Now
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+    private List<Product> Products { get; set; }
+    public void BuyProduct(int productId)
+    {           
+        NavigationManager.NavigateTo($"/user/buy?productid={productId}&quantity=1");
+    }
+    protected override void OnInitialized()
+    {
+     
+        Products = productService.GetAllProductsAsync();
+    }
+
+    public async Task AddToCart(Product product)
+    {
+        Console.WriteLine("Going to Cart");
+        var cart = await GetCartFromStorage();
+        Console.WriteLine(cart.Count);
+        var existingItem = cart.FirstOrDefault(item => item.ProductId == product.ProductId);
+
+        if (existingItem != null)
+        {   
+            existingItem.Quantity++;
+        }
+        else
+        {      
+            var cartItem = new CartItem { ProductId = product.ProductId,
+                ProductName = product.ProductName, UnitPrice = product.UnitPrice, Quantity = 1 };
+            cart.Add(cartItem);
+        }
+
+        var cartJson = JsonSerializer.Serialize(cart);
+        await JSRuntime.InvokeVoidAsync("localStorage.setItem", "cart", cartJson);
+    }
+
+    private async Task<List<CartItem>> GetCartFromStorage()
+    {
+        
+        var cartJson = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "cart");
+
+        if (string.IsNullOrEmpty(cartJson))
+        {
+            Console.WriteLine("?? Not add into cart?");
+            return new List<CartItem>();
+        }
+        else
+        {
+            try
+            {
+   
+                return JsonSerializer.Deserialize<List<CartItem>>(cartJson) ?? new List<CartItem>();
+            }
+            catch (JsonException ex)
+            {
+                
+                Console.WriteLine($"Error Bro oi: deserializing cart from localStorage: {ex.Message}");
+                await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "cart"); 
+                return new List<CartItem>();
+            }
+        }
+    }
+}

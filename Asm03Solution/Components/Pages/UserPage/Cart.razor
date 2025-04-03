@@ -1,0 +1,134 @@
+﻿@page "/cart"
+@using Microsoft.EntityFrameworkCore
+@using DataAccess.Models
+@using BusinessObject.Services
+@using System.Text.Json
+@inject ProductService productService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+@rendermode InteractiveServer
+<h3>Cart</h3>
+
+<table class="table" style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin: 20px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+    <thead>
+        <tr style="background-color: #343a40; color: white;">
+            <th style="padding: 12px 15px; text-align: left; border-bottom: 2px solid #dee2e6;">Product ID</th>
+            <th style="padding: 12px 15px; text-align: left; border-bottom: 2px solid #dee2e6;">Product Name</th>
+            <th style="padding: 12px 15px; text-align: left; border-bottom: 2px solid #dee2e6;">Unit Price</th>
+            <th style="padding: 12px 15px; text-align: left; border-bottom: 2px solid #dee2e6;">Quantity</th>
+            <th style="padding: 12px 15px; text-align: left; border-bottom: 2px solid #dee2e6;">Total</th>
+            <th style="padding: 12px 15px; text-align: left; border-bottom: 2px solid #dee2e6;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(CartItems == null){
+            <tr>Loading</tr>
+        }else{
+            @foreach (var item in CartItems)
+            {
+                <tr style="border-bottom: 1px solid #dddddd;">
+                    <td style="padding: 12px 15px;">@item.ProductId</td>
+                    <td style="padding: 12px 15px;">@item.ProductName</td>
+                    <td style="padding: 12px 15px;">@item.UnitPrice.ToString("C")</td>
+                    <td style="padding: 12px 15px;">
+                        <button @onclick="() => DecreaseQuantity(item)"
+                        style="background-color: #6c757d; color: white; border: none; padding: 2px 8px; border-radius: 4px; cursor: pointer;">
+                            -
+                        </button>
+                        <span style="margin: 0 10px;">@item.Quantity</span>
+                        <button @onclick="() => IncreaseQuantity(item)"
+                        style="background-color: #6c757d; color: white; border: none; padding: 2px 8px; border-radius: 4px; cursor: pointer;">
+                            +
+                        </button>
+                    </td>
+                    <td style="padding: 12px 15px;">@((item.UnitPrice * item.Quantity).ToString("C"))</td>
+                    <td style="padding: 12px 15px;">
+                        <button @onclick="() => RemoveFromCart(item)"
+                        style="background-color: #dc3545; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; transition: background-color 0.3s;"
+                        onmouseover="this.style.backgroundColor='#c82333'"
+                        onmouseout="this.style.backgroundColor='#dc3545'">
+                            Remove
+                        </button>
+                    </td>
+                    <td style="padding: 12px 15px;">
+                        <button @onclick="() => BuyProduct(item.ProductId, item.Quantity)"
+                                style="background-color: #28a745; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; transition: background-color 0.3s;"
+                                onmouseover="this.style.backgroundColor='#218838'"
+                                onmouseout="this.style.backgroundColor='#28a745'">
+                            Buy
+                        </button>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@code {
+    private List<CartItem> CartItems;
+    public void BuyProduct(int productId, int quantity)
+    {
+
+        NavigationManager.NavigateTo($"/user/buy?productid={productId}&quantity={quantity}");
+    }
+    protected override async Task OnAfterRenderAsync(bool render)
+    {
+        if(render){
+            CartItems = await GetCartFromStorage();
+            StateHasChanged();
+            Console.WriteLine(CartItems.Count);
+        }
+    }
+    private async Task IncreaseQuantity(CartItem item)
+    {
+        item.Quantity++;
+        var cartJson = JsonSerializer.Serialize(CartItems);
+        await JSRuntime.InvokeVoidAsync("localStorage.setItem", "cart", cartJson);
+        // Add your logic to update cart storage here
+    }
+
+    private async Task DecreaseQuantity(CartItem item)
+    {
+        if (item.Quantity > 1)
+        {
+            item.Quantity--;
+            var cartJson = JsonSerializer.Serialize(CartItems);
+            await JSRuntime.InvokeVoidAsync("localStorage.setItem", "cart", cartJson);
+        }
+    }
+
+    private async Task RemoveFromCart(CartItem item)
+    {
+        CartItems.Remove(item);
+        var cartJson = JsonSerializer.Serialize(CartItems);
+        await JSRuntime.InvokeVoidAsync("localStorage.setItem", "cart", cartJson);
+        // Add your logic to update cart storage here
+    }
+    private async Task<List<CartItem>> GetCartFromStorage()
+    {
+
+        var cartJson = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "cart");
+
+        if (string.IsNullOrEmpty(cartJson))
+        {
+           
+            return new List<CartItem>();
+        }
+        else
+        {
+            try
+            {
+
+                return JsonSerializer.Deserialize<List<CartItem>>(cartJson) ?? new List<CartItem>();
+            }
+            catch (JsonException ex)
+            {
+
+                Console.WriteLine($"Error deserializing cart from localStorage: {ex.Message}");
+                await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "cart");
+                return new List<CartItem>();
+            }
+        }
+    }
+    
+}
