@@ -3,8 +3,68 @@
   "WorkspaceRootPath": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\asm03solution\\components\\member\\addmember.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\member\\addmember.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\asm03solution\\components\\member\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\member\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\asm03solution\\components\\member\\updatemember.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\member\\updatemember.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F94ED49-6BF5-4BA4-B015-4C1912B7E30E}|BusinessObject\\BusinessObject.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\businessobject\\services\\memberservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F94ED49-6BF5-4BA4-B015-4C1912B7E30E}|BusinessObject\\BusinessObject.csproj|solutionrelative:businessobject\\services\\memberservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F94ED49-6BF5-4BA4-B015-4C1912B7E30E}|BusinessObject\\BusinessObject.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\businessobject\\services\\instance\\imemberservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F94ED49-6BF5-4BA4-B015-4C1912B7E30E}|BusinessObject\\BusinessObject.csproj|solutionrelative:businessobject\\services\\instance\\imemberservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\asm03solution\\components\\product\\addproduct.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\product\\addproduct.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\asm03solution\\components\\product\\updateproduct.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\product\\updateproduct.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\asm03solution\\components\\product\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\product\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\dataaccess\\repositories\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repositories\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\asm03solution\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\asm03solution\\components\\pages\\weather.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\pages\\weather.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\asm03solution\\components\\pages\\counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\pages\\counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\asm03solution\\components\\authentication\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\authentication\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F94ED49-6BF5-4BA4-B015-4C1912B7E30E}|BusinessObject\\BusinessObject.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\businessobject\\businessobject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{7F94ED49-6BF5-4BA4-B015-4C1912B7E30E}|BusinessObject\\BusinessObject.csproj|solutionrelative:businessobject\\businessobject.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\dataaccess\\repositories\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\repositories\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\dataaccess\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\asm03solution\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -13,10 +73,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\asm03solution\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\asm03solution\\components\\pages\\counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\pages\\counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|e:\\prn221_asm\\asm_group\\prn222_assignment3\\asm03solution\\components\\pages\\error.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -45,9 +101,152 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 1183,
-          "SelectedChildIndex": 13,
+          "DockedHeight": 1062,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AddMember.razor",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\Member\\AddMember.razor",
+              "RelativeDocumentMoniker": "Asm03Solution\\Components\\Member\\AddMember.razor",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\Member\\AddMember.razor",
+              "RelativeToolTip": "Asm03Solution\\Components\\Member\\AddMember.razor",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-03T19:03:25.344Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UpdateMember.razor",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\Member\\UpdateMember.razor",
+              "RelativeDocumentMoniker": "Asm03Solution\\Components\\Member\\UpdateMember.razor",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\Member\\UpdateMember.razor",
+              "RelativeToolTip": "Asm03Solution\\Components\\Member\\UpdateMember.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-03T19:03:23.619Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IMemberService.cs",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\BusinessObject\\Services\\Instance\\IMemberService.cs",
+              "RelativeDocumentMoniker": "BusinessObject\\Services\\Instance\\IMemberService.cs",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\BusinessObject\\Services\\Instance\\IMemberService.cs*",
+              "RelativeToolTip": "BusinessObject\\Services\\Instance\\IMemberService.cs*",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAowBkAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T19:01:32.106Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MemberService.cs",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\BusinessObject\\Services\\MemberService.cs",
+              "RelativeDocumentMoniker": "BusinessObject\\Services\\MemberService.cs",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\BusinessObject\\Services\\MemberService.cs",
+              "RelativeToolTip": "BusinessObject\\Services\\MemberService.cs",
+              "ViewState": "AgIAAJsAAAAAAAAAAAAUwHgAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T19:01:28.207Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.razor",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\Member\\Index.razor",
+              "RelativeDocumentMoniker": "Asm03Solution\\Components\\Member\\Index.razor",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\Member\\Index.razor",
+              "RelativeToolTip": "Asm03Solution\\Components\\Member\\Index.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-03T19:01:24.455Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AddProduct.razor",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\Product\\AddProduct.razor",
+              "RelativeDocumentMoniker": "Asm03Solution\\Components\\Product\\AddProduct.razor",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\Product\\AddProduct.razor",
+              "RelativeToolTip": "Asm03Solution\\Components\\Product\\AddProduct.razor",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAMwDgAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-03T18:29:41.14Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\_Imports.razor",
+              "RelativeDocumentMoniker": "Asm03Solution\\Components\\_Imports.razor",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\_Imports.razor",
+              "RelativeToolTip": "Asm03Solution\\Components\\_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-03T18:29:26.532Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Weather.razor",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\Pages\\Weather.razor",
+              "RelativeDocumentMoniker": "Asm03Solution\\Components\\Pages\\Weather.razor",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\Pages\\Weather.razor",
+              "RelativeToolTip": "Asm03Solution\\Components\\Pages\\Weather.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-03T18:29:23.609Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.razor",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\Product\\Index.razor",
+              "RelativeDocumentMoniker": "Asm03Solution\\Components\\Product\\Index.razor",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\Product\\Index.razor",
+              "RelativeToolTip": "Asm03Solution\\Components\\Product\\Index.razor",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-03T18:27:54.373Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UpdateProduct.razor",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\Product\\UpdateProduct.razor",
+              "RelativeDocumentMoniker": "Asm03Solution\\Components\\Product\\UpdateProduct.razor",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\Product\\UpdateProduct.razor",
+              "RelativeToolTip": "Asm03Solution\\Components\\Product\\UpdateProduct.razor",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAowHsAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-03T18:27:53.265Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "BusinessObject",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\BusinessObject\\BusinessObject.csproj",
+              "RelativeDocumentMoniker": "BusinessObject\\BusinessObject.csproj",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\BusinessObject\\BusinessObject.csproj",
+              "RelativeToolTip": "BusinessObject\\BusinessObject.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-03T18:26:16.404Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
@@ -70,7 +269,45 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 14,
+              "Title": "UnitOfWork.cs",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\Repositories\\UnitOfWork.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Repositories\\UnitOfWork.cs",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\Repositories\\UnitOfWork.cs",
+              "RelativeToolTip": "DataAccess\\Repositories\\UnitOfWork.cs",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T15:23:06.181Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IUnitOfWork.cs",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\Repositories\\IUnitOfWork.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Repositories\\IUnitOfWork.cs",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\Repositories\\IUnitOfWork.cs",
+              "RelativeToolTip": "DataAccess\\Repositories\\IUnitOfWork.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T15:21:28.116Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "DbInitializer.cs",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\DbInitializer.cs",
+              "RelativeDocumentMoniker": "DataAccess\\DbInitializer.cs",
+              "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\DataAccess\\DbInitializer.cs",
+              "RelativeToolTip": "DataAccess\\DbInitializer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T15:21:24.737Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
               "Title": "App.razor",
               "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\App.razor",
               "RelativeDocumentMoniker": "Asm03Solution\\Components\\App.razor",
@@ -78,12 +315,11 @@
               "RelativeToolTip": "Asm03Solution\\Components\\App.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-02T15:13:56.68Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-02T15:13:56.68Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 11,
               "Title": "Counter.razor",
               "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\Pages\\Counter.razor",
               "RelativeDocumentMoniker": "Asm03Solution\\Components\\Pages\\Counter.razor",
@@ -96,7 +332,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 18,
               "Title": "Error.razor",
               "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\Pages\\Error.razor",
               "RelativeDocumentMoniker": "Asm03Solution\\Components\\Pages\\Error.razor",
@@ -104,12 +340,11 @@
               "RelativeToolTip": "Asm03Solution\\Components\\Pages\\Error.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-02T15:13:53.939Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-02T15:13:53.939Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 19,
               "Title": "Home.razor",
               "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\Pages\\Home.razor",
               "RelativeDocumentMoniker": "Asm03Solution\\Components\\Pages\\Home.razor",
@@ -117,12 +352,11 @@
               "RelativeToolTip": "Asm03Solution\\Components\\Pages\\Home.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-02T15:13:52.633Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-02T15:13:52.633Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 20,
               "Title": "MainLayout.razor",
               "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\Layout\\MainLayout.razor",
               "RelativeDocumentMoniker": "Asm03Solution\\Components\\Layout\\MainLayout.razor",
@@ -130,12 +364,11 @@
               "RelativeToolTip": "Asm03Solution\\Components\\Layout\\MainLayout.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-02T15:13:43.73Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-02T15:13:43.73Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 22,
               "Title": "LoginStatus.razor",
               "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\Authentication\\LoginStatus.razor",
               "RelativeDocumentMoniker": "Asm03Solution\\Components\\Authentication\\LoginStatus.razor",
@@ -143,12 +376,11 @@
               "RelativeToolTip": "Asm03Solution\\Components\\Authentication\\LoginStatus.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-02T15:13:20.809Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-02T15:13:20.809Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 21,
               "Title": "Logout.razor",
               "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\Authentication\\Logout.razor",
               "RelativeDocumentMoniker": "Asm03Solution\\Components\\Authentication\\Logout.razor",
@@ -156,12 +388,11 @@
               "RelativeToolTip": "Asm03Solution\\Components\\Authentication\\Logout.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-02T15:13:19.37Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-02T15:13:19.37Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 16,
               "Title": "NavMenu.razor",
               "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\Layout\\NavMenu.razor",
               "RelativeDocumentMoniker": "Asm03Solution\\Components\\Layout\\NavMenu.razor",
@@ -169,18 +400,17 @@
               "RelativeToolTip": "Asm03Solution\\Components\\Layout\\NavMenu.razor",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-02T15:13:06.357Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-02T15:13:06.357Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 12,
               "Title": "Login.razor",
               "DocumentMoniker": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\Authentication\\Login.razor",
               "RelativeDocumentMoniker": "Asm03Solution\\Components\\Authentication\\Login.razor",
               "ToolTip": "E:\\PRN221_ASM\\ASM_Group\\PRN222_Assignment3\\Asm03Solution\\Components\\Authentication\\Login.razor",
               "RelativeToolTip": "Asm03Solution\\Components\\Authentication\\Login.razor",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAAD0AAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-02T15:12:38.661Z",
               "EditorCaption": ""
@@ -188,12 +418,12 @@
           ]
         },
         {
-          "DockedHeight": 40,
+          "DockedHeight": 161,
           "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             }
           ]
         },

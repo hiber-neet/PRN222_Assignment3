@@ -24,144 +24,177 @@ namespace BusinessObject.Services
 
         public async Task<IEnumerable<Member>> GetAllMembersAsync()
         {
-            return await _unitOfWork.Repository<Member>().GetAllAsync();
+            try
+            {
+                return await _unitOfWork.Repository<Member>().GetAllAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in GetAllMembersAsync: {ex.Message}");
+                throw;
+            }
         }
 
         public async Task<Member> GetMemberByIdAsync(int id)
         {
-            return await _unitOfWork.Repository<Member>().GetByIdAsync(id);
+            try
+            {
+                return await _unitOfWork.Repository<Member>().GetByIdAsync(id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in GetMemberByIdAsync: {ex.Message}");
+                throw;
+            }
         }
 
         public async Task<Member> GetMemberByEmailAsync(string email)
         {
-            var members = await _unitOfWork.Repository<Member>().FindAsync(m => m.Email.Equals(email));
-            return members.FirstOrDefault();
+            try
+            {
+                var members = await _unitOfWork.Repository<Member>().FindAsync(m => m.Email.Equals(email));
+                return members.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in GetMemberByEmailAsync: {ex.Message}");
+                throw;
+            }
         }
 
         public async Task<IEnumerable<Order>> GetMemberOrdersAsync(int memberId)
         {
-            // Check if member exists
-            var member = await _unitOfWork.Repository<Member>().GetByIdAsync(memberId);
-            if (member == null)
+            try
             {
-                throw new KeyNotFoundException($"Member with ID {memberId} not found");
+                return await _unitOfWork.Repository<Order>().FindAsync(o => o.MemberId == memberId);
             }
-
-            return await _unitOfWork.Repository<Order>().FindAsync(o => o.MemberId == memberId);
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in GetMemberOrdersAsync: {ex.Message}");
+                throw;
+            }
         }
 
-        public async Task<Member> CreateMemberAsync(Member member)
+        //public async Task<Member> CreateMemberAsync(Member member)
+        //{
+        //    try
+        //    {
+        //        await _unitOfWork.Repository<Member>().AddAsync(member);
+        //        await _unitOfWork.CommitAsync();
+        //        return member;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"Error in CreateMemberAsync: {ex.Message}");
+        //        throw;
+        //    }
+        //}
+
+        public async Task AddMemberAsync(Member member)
         {
-            if (member == null)
+            try
             {
-                throw new ArgumentNullException(nameof(member));
+                await _unitOfWork.Repository<Member>().AddAsync(member);
+                await _unitOfWork.CommitAsync();
             }
-
-            // Check if email already exists
-            if (await EmailExistsAsync(member.Email))
+            catch (Exception ex)
             {
-                throw new InvalidOperationException($"Member with email {member.Email} already exists");
+                Console.WriteLine($"Error in AddMemberAsync: {ex.Message}");
+                throw;
             }
-
-            await _unitOfWork.Repository<Member>().AddAsync(member);
-            await _unitOfWork.CommitAsync();
-
-            return member;
         }
 
-        public async Task UpdateMemberAsync(int id, Member member)
+        //public async Task UpdateMemberAsync(int id, Member member)
+        //{
+        //    try
+        //    {
+        //        var existingMember = await _unitOfWork.Repository<Member>().GetByIdAsync(id);
+        //        if (existingMember == null)
+        //        {
+        //            throw new Exception($"Member with ID {id} not found.");
+        //        }
+
+        //        // Update properties
+        //        existingMember.Email = member.Email;
+        //        existingMember.CompanyName = member.CompanyName;
+        //        existingMember.City = member.City;
+        //        existingMember.Country = member.Country;
+        //        existingMember.Password = member.Password;
+
+        //        _unitOfWork.Repository<Member>().Update(existingMember);
+        //        await _unitOfWork.CommitAsync();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"Error in UpdateMemberAsync: {ex.Message}");
+        //        throw;
+        //    }
+        //}
+
+        public async Task UpdateMemberAsync(Member member)
         {
-            if (member == null)
+            try
             {
-                throw new ArgumentNullException(nameof(member));
+                _unitOfWork.Repository<Member>().Update(member);
+                await _unitOfWork.CommitAsync();
             }
-
-            if (id != member.MemberId)
+            catch (Exception ex)
             {
-                throw new ArgumentException("Member ID mismatch");
+                Console.WriteLine($"Error in UpdateMemberAsync(Member): {ex.Message}");
+                throw;
             }
-
-            // Check if member exists
-            var existingMember = await _unitOfWork.Repository<Member>().GetByIdAsync(id);
-            if (existingMember == null)
-            {
-                throw new KeyNotFoundException($"Member with ID {id} not found");
-            }
-
-            // Check if email is being changed and already taken by another member
-            if (!string.IsNullOrEmpty(member.Email) && 
-                !member.Email.Equals(existingMember.Email) && 
-                await EmailExistsAsync(member.Email, id))
-            {
-                throw new InvalidOperationException($"Email {member.Email} is already in use by another member");
-            }
-
-            // Only update non-null properties
-            if (!string.IsNullOrEmpty(member.Email))
-            {
-                existingMember.Email = member.Email;
-            }
-
-            if (!string.IsNullOrEmpty(member.CompanyName))
-            {
-                existingMember.CompanyName = member.CompanyName;
-            }
-
-            if (!string.IsNullOrEmpty(member.City))
-            {
-                existingMember.City = member.City;
-            }
-
-            if (!string.IsNullOrEmpty(member.Country))
-            {
-                existingMember.Country = member.Country;
-            }
-
-            if (!string.IsNullOrEmpty(member.Password))
-            {
-                existingMember.Password = member.Password;
-            }
-
-            // Update the entity using the updated existingMember
-            _unitOfWork.Repository<Member>().Update(existingMember);
-            await _unitOfWork.CommitAsync();
         }
 
         public async Task DeleteMemberAsync(int id)
         {
-            var member = await _unitOfWork.Repository<Member>().GetByIdAsync(id);
-            if (member == null)
+            try
             {
-                throw new KeyNotFoundException($"Member with ID {id} not found");
-            }
+                var member = await _unitOfWork.Repository<Member>().GetByIdAsync(id);
+                if (member == null)
+                {
+                    throw new Exception($"Member with ID {id} not found.");
+                }
 
-            // Check if member has any orders
-            if (await MemberHasOrdersAsync(id))
+                _unitOfWork.Repository<Member>().Remove(member);
+                await _unitOfWork.CommitAsync();
+            }
+            catch (Exception ex)
             {
-                throw new InvalidOperationException("Cannot delete member because they have associated orders");
+                Console.WriteLine($"Error in DeleteMemberAsync: {ex.Message}");
+                throw;
             }
-
-            _unitOfWork.Repository<Member>().Remove(member);
-            await _unitOfWork.CommitAsync();
         }
 
         public async Task<bool> EmailExistsAsync(string email, int? excludeMemberId = null)
         {
-            var query = await _unitOfWork.Repository<Member>().FindAsync(m => m.Email.Equals(email));
-
-            if (excludeMemberId.HasValue)
+            try
             {
-                // If we're checking for an existing member (during update), exclude that member from the check
-                return query.Any(m => m.MemberId != excludeMemberId.Value);
+                var members = await _unitOfWork.Repository<Member>().FindAsync(m => m.Email.Equals(email));
+                if (excludeMemberId.HasValue)
+                {
+                    return members.Any(m => m.MemberId != excludeMemberId.Value);
+                }
+                return members.Any();
             }
-
-            return query.Any();
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in EmailExistsAsync: {ex.Message}");
+                throw;
+            }
         }
 
         public async Task<bool> MemberHasOrdersAsync(int memberId)
         {
-            var orders = await _unitOfWork.Repository<Order>().FindAsync(o => o.MemberId == memberId);
-            return orders.Any();
+            try
+            {
+                var orders = await _unitOfWork.Repository<Order>().FindAsync(o => o.MemberId == memberId);
+                return orders.Any();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in MemberHasOrdersAsync: {ex.Message}");
+                throw;
+            }
         }
 
         /// <summary>
@@ -169,60 +202,46 @@ namespace BusinessObject.Services
         /// </summary>
         /// <param name="loginRequest">Login request model</param>
         /// <returns>Member information if authentication succeeds, null otherwise</returns>
-        public async Task<Member?> AuthenticateAsync(LoginRequestModel loginRequest)
+        public async Task<Member> AuthenticateAsync(LoginRequestModel loginRequest)
         {
-            // Guard clauses
-            if (loginRequest == null)
+            if (loginRequest == null || string.IsNullOrEmpty(loginRequest.Email) || string.IsNullOrEmpty(loginRequest.Password))
             {
-                _logger.LogWarning("Login attempt with null login request");
                 return null;
             }
 
-            // Trim and validate input
-            var email = (loginRequest.Email ?? string.Empty).Trim();
-            var password = loginRequest.Password ?? string.Empty;
+            return await AuthenticateAsync(loginRequest.Email, loginRequest.Password);
+        }
 
-            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
-            {
-                _logger.LogWarning("Login attempt with empty email or password");
-                return null;
-            }
-
+        public async Task<Member> AuthenticateAsync(string email, string password)
+        {
             try
             {
-                // Try to find the member with the given email
-                var members = await _unitOfWork.Repository<Member>().FindAsync(m => m.Email == email);
-                var member = members.FirstOrDefault();
+                if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+                {
+                    return null;
+                }
 
+                // Check if email exists
+                var members = await _unitOfWork.Repository<Member>().FindAsync(m => m.Email.Equals(email));
+                var member = members.FirstOrDefault();
                 if (member == null)
                 {
-                    _logger.LogWarning("Login attempt with non-existent email: {Email}", email);
+                    Console.WriteLine($"Authentication failed: Email {email} not found.");
                     return null;
                 }
 
-                // Validate password - in a real production app, passwords should be hashed!
-                if (member.Password != password)
+                // Check if password matches
+                if (!member.Password.Equals(password))
                 {
-                    _logger.LogWarning("Login attempt with incorrect password for email: {Email}", email);
+                    Console.WriteLine($"Authentication failed: Invalid password for email {email}.");
                     return null;
                 }
 
-                // Optional: Update last login timestamp or other audit info
-                // member.LastLoginDate = DateTime.UtcNow;
-                // _unitOfWork.Repository<Member>().Update(member);
-                // await _unitOfWork.CommitAsync();
-
-                _logger.LogInformation("Successful login for email: {Email}", email);
                 return member;
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Exception during authentication for email: {Email}", email);
-                // Rethrow if it's a critical exception, otherwise return null
-                if (ex is OutOfMemoryException || ex is StackOverflowException)
-                {
-                    throw;
-                }
+                Console.WriteLine($"Error in AuthenticateAsync: {ex.Message}");
                 return null;
             }
         }

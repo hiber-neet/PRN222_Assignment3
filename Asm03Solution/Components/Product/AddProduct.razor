@@ -100,7 +100,7 @@
     {
         try
         {
-            categories = await UnitOfWork.Categories.GetAllAsync();
+            categories = await UnitOfWork.Repository<Category>().GetAllAsync();
         }
         catch (Exception ex)
         {
@@ -149,8 +149,8 @@
 
         try
         {
-            await UnitOfWork.Products.AddAsync(newProduct);
-            await UnitOfWork.CompleteAsync();
+            await UnitOfWork.Repository<Product>().AddAsync(newProduct);
+            await UnitOfWork.CommitAsync();
             NavigationManager.NavigateTo("/product");
         }
         catch (Exception ex)

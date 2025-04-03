@@ -20,6 +20,7 @@ namespace Asm03Solution
             // Add services to the container.
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
+            builder.Services.AddRazorPages();
                 
             // Cấu hình SignalR với thời gian chờ cao hơn
             builder.Services.AddSignalR(options =>
@@ -101,6 +102,7 @@ namespace Asm03Solution
             
             // Map controllers
             app.MapControllers();
+            app.MapRazorPages();
            
 
             app.MapRazorComponents<App>()

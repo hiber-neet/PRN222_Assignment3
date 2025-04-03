@@ -20,11 +20,11 @@ namespace BusinessObject.Services.Instance
         // Get orders for a member
         Task<IEnumerable<Order>> GetMemberOrdersAsync(int memberId);
 
-        // Create a new member
-        Task<Member> CreateMemberAsync(Member member);
+        //// Create a new member
+        //Task<Member> CreateMemberAsync(Member member);
 
-        // Update an existing member
-        Task UpdateMemberAsync(int id, Member member);
+        //// Update an existing member
+        //Task UpdateMemberAsync(int id, Member member);
 
         // Delete a member
         Task DeleteMemberAsync(int id);
@@ -37,5 +37,14 @@ namespace BusinessObject.Services.Instance
 
         // Authenticate a member
         Task<Member> AuthenticateAsync(LoginRequestModel loginRequest);
+
+        // Add a new member
+        Task AddMemberAsync(Member member);
+
+        // Update an existing member
+        Task UpdateMemberAsync(Member member);
+
+        // Authenticate a member
+        Task<Member> AuthenticateAsync(string email, string password);
     }
 }

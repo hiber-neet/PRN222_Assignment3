@@ -99,8 +99,8 @@
                 return;
             }
 
-            products = await UnitOfWork.Products.GetAllAsync();
-            var categoriesDict = (await UnitOfWork.Categories.GetAllAsync())?.ToDictionary(c => c.CategoryId) ?? new Dictionary<int, Category>();
+            products = await UnitOfWork.Repository<Product>().GetAllAsync();
+            var categoriesDict = (await UnitOfWork.Repository<Category>().GetAllAsync())?.ToDictionary(c => c.CategoryId) ?? new Dictionary<int, Category>();
 
             foreach (var product in products)
             {
