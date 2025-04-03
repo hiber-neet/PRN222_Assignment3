@@ -1,0 +1,117 @@
+﻿@page "/product/delete/{id:int}"
+@rendermode InteractiveServer
+@using DataAccess.Models
+@using DataAccess.Repositories
+@using Microsoft.AspNetCore.Components
+@inject IUnitOfWork UnitOfWork
+@inject NavigationManager NavigationManager
+
+<PageTitle>Delete Product</PageTitle>
+
+<div class="container mt-4">
+    <h1>Delete Product</h1>
+
+    @if (loading)
+    {
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    }
+    else if (product == null)
+    {
+        <div class="alert alert-danger">
+            Product not found.
+        </div>
+    }
+    else
+    {
+        <div class="card">
+            <div class="card-body">
+                <h4>Are you sure you want to delete this product?</h4>
+                <p><strong>Product Name:</strong> @product.ProductName</p>
+                <p><strong>Unit Price:</strong> @product.UnitPrice.ToString("C")</p>
+                <p><strong>Units In Stock:</strong> @product.UnitsInStock</p>
+                <p><strong>Category:</strong> @(product.Category?.CategoryName ?? "N/A")</p>
+
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-danger me-2" @onclick="ConfirmDelete">Yes</button>
+                    <button class="btn btn-secondary" @onclick="Cancel">No</button>
+                </div>
+
+                @if (errorMessages.Any())
+                {
+                    <div class="alert alert-danger mt-3">
+                        <ul>
+                            @foreach (var error in errorMessages)
+                            {
+                                <li>@error</li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private Product product;
+    private bool loading = true;
+    private List<string> errorMessages = new List<string>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (UnitOfWork == null)
+        {
+            errorMessages.Add("Database service unavailable.");
+            loading = false;
+            return;
+        }
+
+        await LoadProduct();
+        loading = false;
+    }
+
+    private async Task LoadProduct()
+    {
+        try
+        {
+            product = await UnitOfWork.Products.GetByIdAsync(Id);
+            if (product == null)
+            {
+                errorMessages.Add($"Product with ID {Id} not found.");
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessages.Add($"Error loading product: {ex.Message}");
+        }
+    }
+
+    private async Task ConfirmDelete()
+    {
+        try
+        {
+            if (product != null)
+            {
+                UnitOfWork.Products.Remove(product);
+                await UnitOfWork.CompleteAsync();
+                NavigationManager.NavigateTo("/product");
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessages.Add($"Error deleting product: {ex.Message}");
+        }
+    }
+
+    private void Cancel()
+    {
+        NavigationManager.NavigateTo("/product");
+    }
+}
