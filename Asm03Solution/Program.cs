@@ -60,7 +60,7 @@ namespace Asm03Solution
             // Register Repositories and Unit of Work
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-            
+         
             // Register Services
             builder.Services.AddScoped<IMemberService, MemberService>();
             builder.Services.AddScoped<CategoryRepository>();
@@ -122,7 +122,7 @@ namespace Asm03Solution
             
             // Map controllers
             app.MapControllers();
-          
+
             app.MapRazorComponents<App>()
                 .AddInteractiveServerRenderMode();
 
