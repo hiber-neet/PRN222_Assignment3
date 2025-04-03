@@ -7,13 +7,16 @@
     <header class="d-flex justify-content-md-between justify-content-center flex-wrap py-3">
         <NavLink href="/" class="text-light text-decoration-none fs-4 fw-bold">Ecommerce Blazor</NavLink>
         <ul class="nav">
-            <li><NavLink href="/user/products" class="link-light nav-link">Home</NavLink></li>
-            <li><NavLink href="/profile" class="link-light nav-link">About</NavLink></li>
-
+            
+            @if (!IsAdmin)
+            {
+                <li><NavLink href="/user/products" class="link-light nav-link">Home</NavLink></li>
+                <li><NavLink href="/profile" class="link-light nav-link">About</NavLink></li>
+            }
             @if (IsAdmin)
             {
                 <li><NavLink href="/member-management" class="link-light nav-link">Member Management</NavLink></li>
-                <li><NavLink href="/product-management" class="link-light nav-link">Product Management</NavLink></li>
+                <li><NavLink href="/product" class="link-light nav-link">Product Management</NavLink></li>
                 <li><NavLink href="/order-management" class="link-light nav-link">Order Management</NavLink></li>
                 <li><NavLink href="/salesreport" class="link-light nav-link">Sale Report</NavLink></li>
                 <li><NavLink href="/searchproduct" class="link-light nav-link">Search Product</NavLink></li>
