@@ -5,9 +5,11 @@
 @using DataAccess
 @using BusinessObject.Services
 @using System.Text.Json
+@using Microsoft.AspNetCore.Http
 @inject ProductService productService
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JSRuntime
+@inject IHttpContextAccessor HttpContextAccessor
 @rendermode InteractiveServer
 <PageTitle>User</PageTitle>
 
@@ -22,7 +24,6 @@
 }
 else
 {
-
     <table class="table" style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin: 20px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
         <thead>
             <tr style="background-color: #343a40; color: white;">
@@ -35,7 +36,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var product in Products)
+            @foreach (var product in pagedProducts)
             {
                 <tr style="border-bottom: 1px solid #dddddd;">
                     <td style="padding: 12px 15px;">@product.ProductName</td>
@@ -62,13 +63,44 @@ else
             }
         </tbody>
     </table>
+    
+    <div class="d-flex justify-content-center mt-3">
+        <nav>
+            <ul class="pagination">
+                <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+                    <button class="page-link" @onclick="PreviousPage">Trước</button>
+                </li>
+                @for (int i = 1; i <= totalPages; i++)
+                {
+                    var pageNumber = i;
+                    <li class="page-item @(pageNumber == currentPage ? "active" : "")">
+                        <button class="page-link" @onclick="() => GoToPage(pageNumber)">@pageNumber</button>
+                    </li>
+                }
+                <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+                    <button class="page-link" @onclick="NextPage">Sau</button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="text-center">
+        <small>Hiển thị @(pagedProducts.Count()) / @(Products.Count()) sản phẩm</small>
+    </div>
 }
 @code {
     private List<Product> Products { get; set; }
+    private List<Product> pagedProducts { get; set; }
+    
+    // Phân trang
+    private int pageSize = 4;
+    private int currentPage = 1;
+    private int totalPages => Products == null ? 0 : (int)Math.Ceiling(Products.Count / (double)pageSize);
+    
     public void BuyProduct(int productId)
     {           
         NavigationManager.NavigateTo($"/user/buy?productid={productId}&quantity=1");
     }
+    
     protected override void OnInitialized()
     {
         var email = HttpContextAccessor.HttpContext?.Session.GetString("Email");
@@ -83,6 +115,39 @@ else
             }
         }
         Products = productService.GetAllProductsAsync();
+        UpdatePagedProducts();
+    }
+    
+    private void UpdatePagedProducts()
+    {
+        pagedProducts = Products
+            .Skip((currentPage - 1) * pageSize)
+            .Take(pageSize)
+            .ToList();
+    }
+
+    private void GoToPage(int page)
+    {
+        currentPage = page;
+        UpdatePagedProducts();
+    }
+
+    private void PreviousPage()
+    {
+        if (currentPage > 1)
+        {
+            currentPage--;
+            UpdatePagedProducts();
+        }
+    }
+
+    private void NextPage()
+    {
+        if (currentPage < totalPages)
+        {
+            currentPage++;
+            UpdatePagedProducts();
+        }
     }
 
     public async Task AddToCart(Product product)

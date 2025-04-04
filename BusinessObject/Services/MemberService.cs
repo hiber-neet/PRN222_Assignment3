@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BusinessObject.RequestModel;
+using System.Text.RegularExpressions;
 
 namespace BusinessObject.Services
 {
@@ -34,20 +35,39 @@ namespace BusinessObject.Services
 
         public async Task<bool> UpdateMemberProfile(Member user)
         {
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user), "User information cannot be null");
+            }
+
+            if (!IsValidEmail(user.Email))
+            {
+                throw new ArgumentException("Email address is not in a valid format", nameof(user.Email));
+            }
 
             var existingUser = await _memberRepository.GetByIdAsync(user.MemberId);
             if (existingUser == null)
             {
                 throw new Exception("User not found");
             }
+
+            if (existingUser.Email != user.Email)
+            {
+                var memberWithSameEmail = await GetMemberByEmail(user.Email);
+                if (memberWithSameEmail != null && memberWithSameEmail.MemberId != user.MemberId)
+                {
+                    throw new InvalidOperationException($"A member with email {user.Email} already exists");
+                }
+            }
+
             existingUser.City = user.City;
             existingUser.CompanyName = user.CompanyName;
             existingUser.Country = user.Country;
+            existingUser.Email = user.Email;
 
             var result = await _memberRepository.UpdateAsync(existingUser);
             return result > 0;
         }
-
 
         public async Task<IEnumerable<Member>> GetAllMembersAsync()
         {
@@ -108,11 +128,56 @@ namespace BusinessObject.Services
 
         public async Task AddMemberAsync(Member member)
         {
+            if (member == null)
+            {
+                throw new ArgumentNullException(nameof(member), "Member information cannot be null");
+            }
+
+            if (!IsValidEmail(member.Email))
+            {
+                throw new ArgumentException("Email address is not in a valid format", nameof(member.Email));
+            }
+
+            var existingMember = await GetMemberByEmail(member.Email);
+            if (existingMember != null)
+            {
+                throw new InvalidOperationException($"A member with email {member.Email} already exists");
+            }
+
             await _memberRepository.CreateAsync(member);
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+
+            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            return Regex.IsMatch(email, pattern);
         }
 
         public async Task UpdateMemberAsync(Member member)
         {
+            if (member == null)
+            {
+                throw new ArgumentNullException(nameof(member), "Member information cannot be null");
+            }
+
+            if (!IsValidEmail(member.Email))
+            {
+                throw new ArgumentException("Email address is not in a valid format", nameof(member.Email));
+            }
+
+            var existingMember = await _memberRepository.GetByIdAsync(member.MemberId);
+            if (existingMember != null && existingMember.Email != member.Email)
+            {
+                var memberWithSameEmail = await GetMemberByEmail(member.Email);
+                if (memberWithSameEmail != null && memberWithSameEmail.MemberId != member.MemberId)
+                {
+                    throw new InvalidOperationException($"A member with email {member.Email} already exists");
+                }
+            }
+
             await UpdateMemberProfile(member);
         }
 
