@@ -46,7 +46,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var product in products)
+                    @foreach (var product in pagedProducts)
                     {
                         <tr>
                             <td>@product.ProductName</td>
@@ -63,6 +63,29 @@
                 </tbody>
             </table>
         </div>
+        
+        <div class="d-flex justify-content-center mt-3">
+            <nav>
+                <ul class="pagination">
+                    <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+                        <button class="page-link" @onclick="PreviousPage">Trước</button>
+                    </li>
+                    @for (int i = 1; i <= totalPages; i++)
+                    {
+                        var pageNumber = i;
+                        <li class="page-item @(pageNumber == currentPage ? "active" : "")">
+                            <button class="page-link" @onclick="() => GoToPage(pageNumber)">@pageNumber</button>
+                        </li>
+                    }
+                    <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+                        <button class="page-link" @onclick="NextPage">Sau</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="text-center">
+            <small>Hiển thị @pagedProducts.Count() / @products.Count() sản phẩm</small>
+        </div>
     }
 
     @if (!string.IsNullOrEmpty(errorMessage))
@@ -73,9 +96,15 @@
 
 @code {
     private IEnumerable<Product> products;
+    private IEnumerable<Product> pagedProducts;
     private bool loading = true;
     private bool isAuthenticated = false;
     private string errorMessage;
+    
+    // Phân trang
+    private int pageSize = 3;
+    private int currentPage = 1;
+    private int totalPages => products == null ? 0 : (int)Math.Ceiling(products.Count() / (double)pageSize);
 
     protected override async Task OnInitializedAsync()
     {
@@ -95,7 +124,7 @@
             }
 
 
-            products =  ProductService.GetAllProductsAsync();
+            products = ProductService.GetAllProductsAsync();
             var categoriesDict = (await CategoryService.GetAllCategoriesAsync())?.ToDictionary(c => c.CategoryId) ?? new Dictionary<int, Category>();
 
 
@@ -106,6 +135,8 @@
                     product.Category = categoriesDict[product.CategoryId];
                 }
             }
+            
+            UpdatePagedProducts();
         }
         catch (Exception ex)
         {
@@ -115,6 +146,38 @@
         {
             loading = false;
             StateHasChanged();
+        }
+    }
+    
+    private void UpdatePagedProducts()
+    {
+        pagedProducts = products
+            .Skip((currentPage - 1) * pageSize)
+            .Take(pageSize)
+            .ToList();
+    }
+
+    private void GoToPage(int page)
+    {
+        currentPage = page;
+        UpdatePagedProducts();
+    }
+
+    private void PreviousPage()
+    {
+        if (currentPage > 1)
+        {
+            currentPage--;
+            UpdatePagedProducts();
+        }
+    }
+
+    private void NextPage()
+    {
+        if (currentPage < totalPages)
+        {
+            currentPage++;
+            UpdatePagedProducts();
         }
     }
 

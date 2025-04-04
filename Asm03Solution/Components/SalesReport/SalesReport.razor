@@ -18,9 +18,9 @@
 
 <button class="btn btn-primary" @onclick="GenerateReport">Generate Report</button>
 
-@if (orders != null && orders.Any())
+@if (orderDetails != null && orderDetails.Any())
 {
-    <table class="table table-striped">
+    <table class="table table-striped mt-3">
         <thead>
             <tr>
                 <th>Order ID</th>
@@ -33,44 +33,132 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var order in orders)
+            @foreach (var detail in pagedOrderDetails)
             {
-                @foreach (var detail in order.OrderDetails)
-                {
-                    <tr>
-                        <td>@order.OrderId</td>
-                        <td>@order.OrderDate.ToString("MM/dd/yyyy")</td>
-                        <td>@detail.Product.ProductName</td>
-                        <td>@detail.UnitPrice</td>
-                        <td>@detail.Quantity</td>
-                        <td>@detail.Discount</td>
-                        <td>@(detail.UnitPrice * detail.Quantity * (1 - (decimal)detail.Discount))</td>
-                    </tr>
-                }
+                <tr>
+                    <td>@detail.OrderId</td>
+                    <td>@detail.OrderDate.ToString("MM/dd/yyyy")</td>
+                    <td>@detail.ProductName</td>
+                    <td>@detail.UnitPrice</td>
+                    <td>@detail.Quantity</td>
+                    <td>@detail.Discount</td>
+                    <td>@(detail.UnitPrice * detail.Quantity * (1 - (decimal)detail.Discount))</td>
+                </tr>
             }
         </tbody>
     </table>
+    
+    <div class="d-flex justify-content-center mt-3">
+        <nav>
+            <ul class="pagination">
+                <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+                    <button class="page-link" @onclick="PreviousPage">Trước</button>
+                </li>
+                @for (int i = 1; i <= totalPages; i++)
+                {
+                    var pageNumber = i;
+                    <li class="page-item @(pageNumber == currentPage ? "active" : "")">
+                        <button class="page-link" @onclick="() => GoToPage(pageNumber)">@pageNumber</button>
+                    </li>
+                }
+                <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+                    <button class="page-link" @onclick="NextPage">Sau</button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="text-center">
+        <small>Hiển thị @(pagedOrderDetails.Count()) / @(orderDetails.Count()) dòng báo cáo</small>
+    </div>
 }
 else if (orders != null)
 {
     <div class="mt-5">
         <strong>No sales found for the selected period.</strong>
     </div>
-
 }
 
 @code {
     private DateTime startDate = DateTime.Today.AddDays(-30);
     private DateTime endDate = DateTime.Today;
     private List<Order>? orders;
+    private List<OrderDetailViewModel> orderDetails;
+    private List<OrderDetailViewModel> pagedOrderDetails;
+    
+    // Phân trang
+    private int pageSize = 5;
+    private int currentPage = 1;
+    private int totalPages => orderDetails == null ? 0 : (int)Math.Ceiling(orderDetails.Count / (double)pageSize);
+    
+    // Class để hiển thị dữ liệu
+    private class OrderDetailViewModel
+    {
+        public int OrderId { get; set; }
+        public DateTime OrderDate { get; set; }
+        public string ProductName { get; set; }
+        public decimal UnitPrice { get; set; }
+        public int Quantity { get; set; }
+        public float Discount { get; set; }
+    }
 
     private async Task GenerateReport()
     {
-        //giam dan theo date
+        // Tải dữ liệu đơn hàng
         orders = await orderService.GetOrdersByPeriodAsync(startDate, endDate);
+        
+        // Chuyển đổi dữ liệu sang dạng phẳng để dễ phân trang
+        orderDetails = new List<OrderDetailViewModel>();
+        
+        foreach (var order in orders)
+        {
+            foreach (var detail in order.OrderDetails)
+            {
+                orderDetails.Add(new OrderDetailViewModel
+                {
+                    OrderId = order.OrderId,
+                    OrderDate = order.OrderDate,
+                    ProductName = detail.Product.ProductName,
+                    UnitPrice = detail.UnitPrice,
+                    Quantity = detail.Quantity,
+                    Discount = detail.Discount
+                });
+            }
+        }
+        
+        // Cập nhật phân trang
+        currentPage = 1;
+        UpdatePagedOrderDetails();
+    }
+    
+    private void UpdatePagedOrderDetails()
+    {
+        pagedOrderDetails = orderDetails
+            .Skip((currentPage - 1) * pageSize)
+            .Take(pageSize)
+            .ToList();
+    }
 
-        // tong doanh thu giam dan chua fix duoc
-        // orders = orders.OrderByDescending(o => o.OrderDetails.Sum(d => d.UnitPrice * d.Quantity * (1 - (decimal)d.Discount))).ToList();
-      
+    private void GoToPage(int page)
+    {
+        currentPage = page;
+        UpdatePagedOrderDetails();
+    }
+
+    private void PreviousPage()
+    {
+        if (currentPage > 1)
+        {
+            currentPage--;
+            UpdatePagedOrderDetails();
+        }
+    }
+
+    private void NextPage()
+    {
+        if (currentPage < totalPages)
+        {
+            currentPage++;
+            UpdatePagedOrderDetails();
+        }
     }
 }

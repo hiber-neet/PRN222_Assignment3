@@ -15,7 +15,8 @@
 }
 else
 {
-
+    <h3>Order Management</h3>
+    
     <table class="table" style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin: 20px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
         <thead>
             <tr style="background-color: #343a40; color: white;">
@@ -26,7 +27,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var order in Orders)
+            @foreach (var order in pagedOrders)
             {
                 <tr style="border-bottom: 1px solid #dddddd;">
                     <td style="padding: 12px 15px;">@order.OrderDate</td>
@@ -51,11 +52,74 @@ else
             }
         </tbody>
     </table>
+    
+    <div class="d-flex justify-content-center mt-3">
+        <nav>
+            <ul class="pagination">
+                <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+                    <button class="page-link" @onclick="PreviousPage">Trước</button>
+                </li>
+                @for (int i = 1; i <= totalPages; i++)
+                {
+                    var pageNumber = i;
+                    <li class="page-item @(pageNumber == currentPage ? "active" : "")">
+                        <button class="page-link" @onclick="() => GoToPage(pageNumber)">@pageNumber</button>
+                    </li>
+                }
+                <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+                    <button class="page-link" @onclick="NextPage">Sau</button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="text-center">
+        <small>Hiển thị @(pagedOrders.Count()) / @(Orders.Count()) đơn hàng</small>
+    </div>
 }
 @code{
     private List<Order> Orders { get; set; }
+    private List<Order> pagedOrders { get; set; }
+    
+    // Phân trang
+    private int pageSize = 5;
+    private int currentPage = 1;
+    private int totalPages => Orders == null ? 0 : (int)Math.Ceiling(Orders.Count / (double)pageSize);
+    
     protected override async Task OnInitializedAsync()
     {
         Orders = await orderService.GetAllOrders();
+        UpdatePagedOrders();
+    }
+    
+    private void UpdatePagedOrders()
+    {
+        pagedOrders = Orders
+            .Skip((currentPage - 1) * pageSize)
+            .Take(pageSize)
+            .ToList();
+    }
+
+    private void GoToPage(int page)
+    {
+        currentPage = page;
+        UpdatePagedOrders();
+    }
+
+    private void PreviousPage()
+    {
+        if (currentPage > 1)
+        {
+            currentPage--;
+            UpdatePagedOrders();
+        }
+    }
+
+    private void NextPage()
+    {
+        if (currentPage < totalPages)
+        {
+            currentPage++;
+            UpdatePagedOrders();
+        }
     }
 }

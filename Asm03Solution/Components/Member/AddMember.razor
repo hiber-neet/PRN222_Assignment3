@@ -33,7 +33,7 @@
                     
                     <div class="mb-3">
                         <label class="form-label">Email <span class="text-danger">*</span></label>
-                        <InputText class="form-control" @bind-Value="newMember.Email" />
+                        <InputText typeof="email" class="form-control" @bind-Value="newMember.Email" />
                         <ValidationMessage For="@(() => newMember.Email)" />
                     </div>
 
