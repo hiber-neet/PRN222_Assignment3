@@ -1,10 +1,11 @@
 ﻿@page "/product/edit/{id:int}"
 @rendermode InteractiveServer
 @using DataAccess.Models
-@using DataAccess.Repositories
+@using BusinessObject.Services
 @using Microsoft.AspNetCore.Components
 @using Microsoft.AspNetCore.Components.Forms
-@inject IUnitOfWork UnitOfWork
+@inject ProductService ProductService
+@inject CategoryService CategoryService
 @inject NavigationManager NavigationManager
 
 <PageTitle>Edit Product</PageTitle>
@@ -12,7 +13,7 @@
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Edit Product</h1>
-        <button class="btn btn-secondary" @onclick="BackToList">Back to List</button>
+        <button type="button" class="btn btn-secondary" @onclick="BackToList">Back to List</button> <!-- Thêm type="button" -->
     </div>
 
     @if (loading)
@@ -105,9 +106,9 @@
 
     protected override async Task OnInitializedAsync()
     {
-        if (UnitOfWork == null)
+        if (ProductService == null || CategoryService == null)
         {
-            errorMessages.Add("Database service unavailable.");
+            errorMessages.Add("Database service is unavailable.");
             loading = false;
             return;
         }
@@ -121,11 +122,13 @@
     {
         try
         {
-            categories = await UnitOfWork.Categories.GetAllAsync();
+
+            categories = await CategoryService.GetAllCategoriesAsync();
+
         }
         catch (Exception ex)
         {
-            errorMessages.Add($"Error loading categories: {ex.Message}");
+            errorMessages.Add($"Error while Loading product: {ex.Message}");
         }
     }
 
@@ -133,10 +136,12 @@
     {
         try
         {
-            product = await UnitOfWork.Products.GetByIdAsync(Id);
+
+            product =  ProductService.GetProductById(Id);
+
             if (product == null)
             {
-                errorMessages.Add($"Product with ID {Id} not found.");
+                errorMessages.Add($"No products found with ID {Id}.");
             }
         }
         catch (Exception ex)
@@ -147,9 +152,9 @@
 
     private async Task HandleSubmit(EditContext editContext)
     {
-        errorMessages.Clear(); // Xóa các lỗi cũ trước khi kiểm tra
+        errorMessages.Clear(); 
 
-        // Kiểm tra validation từ DataAnnotations
+       
         if (!editContext.Validate())
         {
             var messages = editContext.GetValidationMessages();
@@ -157,20 +162,23 @@
             return;
         }
 
-        // Kiểm tra các điều kiện bổ sung
+       
         if (string.IsNullOrEmpty(product.ProductName))
         {
-            errorMessages.Add("Product Name cannot be empty.");
+            errorMessages.Add("Product name cannot be blank.");
         }
-
+        if (string.IsNullOrEmpty(product.Weight))
+        {
+            errorMessages.Add("Product Weight cannot be blank.");
+        }
         if (product.UnitPrice <= 0)
         {
-            errorMessages.Add("Unit Price must be greater than 0.");
+            errorMessages.Add("Unit price must be greater than 0.");
         }
 
         if (product.UnitsInStock <= 0)
         {
-            errorMessages.Add("Units In Stock must be greater than 0.");
+            errorMessages.Add("Inventory quantity must be greater than 0.");
         }
 
         if (product.CategoryId == 0)
@@ -178,22 +186,23 @@
             errorMessages.Add("Please select a category.");
         }
 
-        // Nếu có lỗi, dừng xử lý
+       
         if (errorMessages.Any())
         {
             return;
         }
 
-        // Nếu không có lỗi, cập nhật sản phẩm
+        
         try
         {
-            UnitOfWork.Products.Update(product);
-            await UnitOfWork.CompleteAsync();
+
+            await ProductService.UpdateProductAsync(product);
+
             NavigationManager.NavigateTo("/product");
         }
         catch (Exception ex)
         {
-            errorMessages.Add($"Error updating product: {ex.Message}");
+            errorMessages.Add($"Error while updating product: {ex.Message}");
         }
     }
 

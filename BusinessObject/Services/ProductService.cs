@@ -38,6 +38,18 @@ namespace BusinessObject.Services
 		{
 			return _productRepository.SearchProducts(keyword, price);
 		}
-	}
+        public async Task AddProductAsync(Product product)
+        {
+            await _productRepository.AddProductAsync(product);
+        }
+        public async Task DeleteProductAsync(int id)
+        {
+            await _productRepository.DeleteProductAsync(id);
+        }
+        public async Task UpdateProductAsync(Product product)
+        {
+            await _productRepository.UpdateProductAsync(product);
+        }
+    }
 
 }

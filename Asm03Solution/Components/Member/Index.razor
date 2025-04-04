@@ -1,0 +1,126 @@
+@page "/member"
+@rendermode InteractiveServer
+@using DataAccess.Models
+@using BusinessObject.Services.Instance
+@using Microsoft.AspNetCore.Components
+@inject IMemberService MemberService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Members</PageTitle>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Members</h1>
+        <button class="btn btn-primary" @onclick="CreateNewMember">Create New</button>
+    </div>
+
+    @if (loading)
+    {
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    }
+    else if (members == null || !members.Any())
+    {
+        <div class="alert alert-info">
+            No members found.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Email</th>
+                        <th>Company Name</th>
+                        <th>City</th>
+                        <th>Country</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var member in members)
+                    {
+                        <tr>
+                            <td>@member.Email</td>
+                            <td>@member.CompanyName</td>
+                            <td>@member.City</td>
+                            <td>@member.Country</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm me-1" @onclick="() => EditMember(member.MemberId)">Edit</button>
+                                <button class="btn btn-danger btn-sm" @onclick="() => DeleteMember(member.MemberId)">Delete</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="alert alert-danger mt-3">@errorMessage</div>
+    }
+</div>
+
+@code {
+    private IEnumerable<Member> members;
+    private bool loading = true;
+    private string errorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {    
+        await LoadMembers();
+    }
+
+    private async Task LoadMembers()
+    {
+        loading = true;
+        try
+        {
+            members = await MemberService.GetAllMembersAsync();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error loading members: {ex.Message}";
+        }
+        finally
+        {
+            loading = false;
+            StateHasChanged();
+        }
+    }
+
+    // private async Task CheckAuthentication()
+    // {
+    //     try
+    //     {
+    //         var userJson = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "currentUser");
+    //         isAuthenticated = !string.IsNullOrEmpty(userJson);
+    //     }
+    //     catch (Exception ex)
+    //     {
+    //         isAuthenticated = false;
+    //         errorMessage = $"Error checking authentication: {ex.Message}";
+    //     }
+    // }
+
+    private void CreateNewMember()
+    {
+        NavigationManager.NavigateTo("/member/add");
+    }
+
+    private void EditMember(int id)
+    {
+        NavigationManager.NavigateTo($"/member/edit/{id}");
+    }
+
+    private void DeleteMember(int id)
+    {
+        NavigationManager.NavigateTo($"/member/delete/{id}");
+    }
+} 

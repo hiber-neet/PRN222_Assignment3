@@ -1,0 +1,186 @@
+@page "/member/add"
+@rendermode InteractiveServer
+@using DataAccess.Models
+@using BusinessObject.Services.Instance
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Forms
+@inject IMemberService MemberService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Add Member</PageTitle>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Add New Member</h1>
+        <a href="/member" class="btn btn-secondary">Back to List</a>
+    </div>
+
+    @if (loading)
+    {
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="card">
+            <div class="card-body">
+                <EditForm Model="@newMember" OnSubmit="@HandleSubmit">
+                    <DataAnnotationsValidator />
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Email <span class="text-danger">*</span></label>
+                        <InputText class="form-control" @bind-Value="newMember.Email" />
+                        <ValidationMessage For="@(() => newMember.Email)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Company Name <span class="text-danger">*</span></label>
+                        <InputText class="form-control" @bind-Value="newMember.CompanyName" />
+                        <ValidationMessage For="@(() => newMember.CompanyName)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">City <span class="text-danger">*</span></label>
+                        <InputText class="form-control" @bind-Value="newMember.City" />
+                        <ValidationMessage For="@(() => newMember.City)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Country <span class="text-danger">*</span></label>
+                        <InputText class="form-control" @bind-Value="newMember.Country" />
+                        <ValidationMessage For="@(() => newMember.Country)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Password <span class="text-danger">*</span></label>
+                        <InputText type="password" class="form-control" @bind-Value="newMember.Password" />
+                        <ValidationMessage For="@(() => newMember.Password)" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Confirm Password <span class="text-danger">*</span></label>
+                        <InputText type="password" class="form-control" @bind-Value="confirmPassword" />
+                        @if (!string.IsNullOrEmpty(passwordError))
+                        {
+                            <div class="text-danger">@passwordError</div>
+                        }
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary me-2">Save</button>
+                        <button type="button" class="btn btn-secondary" @onclick="ClearForm">Clear</button>
+                    </div>
+                </EditForm>
+
+                @if (errorMessages.Any())
+                {
+                    <div class="alert alert-danger mt-3">
+                        <ul>
+                            @foreach (var error in errorMessages)
+                            {
+                                <li>@error</li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private Member newMember = new Member();
+    private string confirmPassword = string.Empty;
+    private string passwordError = string.Empty;
+    private bool loading = false;
+    private List<string> errorMessages = new List<string>();
+    private bool isAuthenticated = false;
+
+
+    private async Task HandleSubmit(EditContext editContext)
+    {
+        errorMessages.Clear();
+        passwordError = string.Empty;
+
+        // Validate passwords match
+        if (newMember.Password != confirmPassword)
+        {
+            passwordError = "Passwords do not match.";
+            return;
+        }
+
+        // Validate from DataAnnotations
+        if (!editContext.Validate())
+        {
+            var messages = editContext.GetValidationMessages();
+            errorMessages.AddRange(messages);
+            return;
+        }
+
+        // Additional custom validations
+        if (string.IsNullOrEmpty(newMember.Email))
+        {
+            errorMessages.Add("Email cannot be empty.");
+        }
+        if (string.IsNullOrEmpty(newMember.CompanyName))
+        {
+            errorMessages.Add("Company Name cannot be empty.");
+        }
+        if (string.IsNullOrEmpty(newMember.City))
+        {
+            errorMessages.Add("City cannot be empty.");
+        }
+        if (string.IsNullOrEmpty(newMember.Country))
+        {
+            errorMessages.Add("Country cannot be empty.");
+        }
+        if (string.IsNullOrEmpty(newMember.Password))
+        {
+            errorMessages.Add("Password cannot be empty.");
+        }
+
+        if (errorMessages.Any())
+        {
+            return;
+        }
+
+        loading = true;
+        try
+        {
+            // Check if email already exists
+            var existingMember = await MemberService.GetMemberByEmailAsync(newMember.Email);
+            if (existingMember != null)
+            {
+                errorMessages.Add("Email already exists. Please use another email.");
+                loading = false;
+                return;
+            }
+
+            // Add new member
+            await MemberService.AddMemberAsync(newMember);
+            NavigationManager.NavigateTo("/member");
+        }
+        catch (Exception ex)
+        {
+            errorMessages.Add($"Error adding member: {ex.Message}");
+        }
+        finally
+        {
+            loading = false;
+            StateHasChanged();
+        }
+    }
+
+    private void ClearForm()
+    {
+        newMember = new Member();
+        confirmPassword = string.Empty;
+        passwordError = string.Empty;
+        errorMessages.Clear();
+        StateHasChanged();
+    }
+} 

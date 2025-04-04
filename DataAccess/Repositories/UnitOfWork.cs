@@ -14,16 +14,6 @@ namespace DataAccess.Repositories
         private IDbContextTransaction _currentTransaction;
         private bool _disposed;
 
-        public IGenericRepository<Member> Members => throw new NotImplementedException();
-
-        public IGenericRepository<Order> Orders => throw new NotImplementedException();
-
-        public IGenericRepository<OrderDetail> OrderDetails => throw new NotImplementedException();
-
-        public IGenericRepository<Product> Products => throw new NotImplementedException();
-
-        public IGenericRepository<Category> Categories => throw new NotImplementedException();
-
         public UnitOfWork(ECommerceContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
@@ -132,9 +122,5 @@ namespace DataAccess.Repositories
             }
         }
 
-        public Task<int> CompleteAsync()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -1,9 +1,9 @@
 ﻿@page "/product/delete/{id:int}"
 @rendermode InteractiveServer
 @using DataAccess.Models
-@using DataAccess.Repositories
+@using BusinessObject.Services
 @using Microsoft.AspNetCore.Components
-@inject IUnitOfWork UnitOfWork
+@inject ProductService ProductService
 @inject NavigationManager NavigationManager
 
 <PageTitle>Delete Product</PageTitle>
@@ -66,9 +66,9 @@
 
     protected override async Task OnInitializedAsync()
     {
-        if (UnitOfWork == null)
+        if (ProductService == null)
         {
-            errorMessages.Add("Database service unavailable.");
+            errorMessages.Add("Database service is unavailable.");
             loading = false;
             return;
         }
@@ -81,10 +81,13 @@
     {
         try
         {
-            product = await UnitOfWork.Products.GetByIdAsync(Id);
+
+            product =  ProductService.GetProductById(Id);
+
+
             if (product == null)
             {
-                errorMessages.Add($"Product with ID {Id} not found.");
+                errorMessages.Add($"No products found with ID {Id}.");
             }
         }
         catch (Exception ex)
@@ -99,8 +102,9 @@
         {
             if (product != null)
             {
-                UnitOfWork.Products.Remove(product);
-                await UnitOfWork.CompleteAsync();
+
+                await ProductService.DeleteProductAsync(Id);
+
                 NavigationManager.NavigateTo("/product");
             }
         }

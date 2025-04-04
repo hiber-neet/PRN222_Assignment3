@@ -22,7 +22,10 @@ namespace DataAccess.Repositories
              u.Password == password);
             return result;
         }
-
+        public void Remove(Member member)
+        {
+            _context.Members.Remove(member);
+        }
         public async Task<List<Member>> GetAllUser()
         {
             return await _context.Members.ToListAsync();
