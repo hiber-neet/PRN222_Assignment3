@@ -1,9 +1,33 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Administrator\\Desktop\\Asm03Solution2\\PRN222_Assignment3\\",
+  "WorkspaceRootPath": "E:\\PRN221_ASM\\ASM3\\PRN222_Assignment3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|c:\\users\\administrator\\desktop\\asm03solution2\\prn222_assignment3\\asm03solution\\components\\member\\deletemember.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|e:\\prn221_asm\\asm3\\prn222_assignment3\\dataaccess\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|e:\\prn221_asm\\asm3\\prn222_assignment3\\asm03solution\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|e:\\prn221_asm\\asm3\\prn222_assignment3\\asm03solution\\components\\memberaccount\\profile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\memberaccount\\profile.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|e:\\prn221_asm\\asm3\\prn222_assignment3\\asm03solution\\components\\member\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\member\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|e:\\prn221_asm\\asm3\\prn222_assignment3\\dataaccess\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|e:\\prn221_asm\\asm3\\prn222_assignment3\\dataaccess\\ecommercecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4CD2D0F-ECC9-49E4-A34B-F18C3DD8450F}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\ecommercecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|e:\\prn221_asm\\asm3\\prn222_assignment3\\asm03solution\\components\\member\\deletemember.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{67F685CE-4ACF-4DF9-9DFF-4411C4F5F498}|Asm03Solution\\Asm03Solution.csproj|solutionrelative:asm03solution\\components\\member\\deletemember.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
@@ -13,21 +37,137 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 1014,
-          "SelectedChildIndex": 0,
+          "DockedHeight": 751,
+          "SelectedChildIndex": 5,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Product.cs",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM3\\PRN222_Assignment3\\DataAccess\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Models\\Product.cs",
+              "ToolTip": "E:\\PRN221_ASM\\ASM3\\PRN222_Assignment3\\DataAccess\\Models\\Product.cs",
+              "RelativeToolTip": "DataAccess\\Models\\Product.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-04T06:27:01.49Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM3\\PRN222_Assignment3\\Asm03Solution\\appsettings.json",
+              "RelativeDocumentMoniker": "Asm03Solution\\appsettings.json",
+              "ToolTip": "E:\\PRN221_ASM\\ASM3\\PRN222_Assignment3\\Asm03Solution\\appsettings.json",
+              "RelativeToolTip": "Asm03Solution\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-04T06:12:53.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Profile.razor",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM3\\PRN222_Assignment3\\Asm03Solution\\Components\\MemberAccount\\Profile.razor",
+              "RelativeDocumentMoniker": "Asm03Solution\\Components\\MemberAccount\\Profile.razor",
+              "ToolTip": "E:\\PRN221_ASM\\ASM3\\PRN222_Assignment3\\Asm03Solution\\Components\\MemberAccount\\Profile.razor",
+              "RelativeToolTip": "Asm03Solution\\Components\\MemberAccount\\Profile.razor",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-04T06:11:39.828Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.razor",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM3\\PRN222_Assignment3\\Asm03Solution\\Components\\Member\\Index.razor",
+              "RelativeDocumentMoniker": "Asm03Solution\\Components\\Member\\Index.razor",
+              "ToolTip": "E:\\PRN221_ASM\\ASM3\\PRN222_Assignment3\\Asm03Solution\\Components\\Member\\Index.razor",
+              "RelativeToolTip": "Asm03Solution\\Components\\Member\\Index.razor",
+              "ViewState": "AgIAAJMAAAAAAAAAAAAAAK0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-04T06:08:55.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DbInitializer.cs",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM3\\PRN222_Assignment3\\DataAccess\\DbInitializer.cs",
+              "RelativeDocumentMoniker": "DataAccess\\DbInitializer.cs",
+              "ToolTip": "E:\\PRN221_ASM\\ASM3\\PRN222_Assignment3\\DataAccess\\DbInitializer.cs",
+              "RelativeToolTip": "DataAccess\\DbInitializer.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBIAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-04T06:08:02.498Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ECommerceContext.cs",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM3\\PRN222_Assignment3\\DataAccess\\ECommerceContext.cs",
+              "RelativeDocumentMoniker": "DataAccess\\ECommerceContext.cs",
+              "ToolTip": "E:\\PRN221_ASM\\ASM3\\PRN222_Assignment3\\DataAccess\\ECommerceContext.cs",
+              "RelativeToolTip": "DataAccess\\ECommerceContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-04T06:08:01.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "DeleteMember.razor",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Asm03Solution2\\PRN222_Assignment3\\Asm03Solution\\Components\\Member\\DeleteMember.razor",
+              "DocumentMoniker": "E:\\PRN221_ASM\\ASM3\\PRN222_Assignment3\\Asm03Solution\\Components\\Member\\DeleteMember.razor",
               "RelativeDocumentMoniker": "Asm03Solution\\Components\\Member\\DeleteMember.razor",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Asm03Solution2\\PRN222_Assignment3\\Asm03Solution\\Components\\Member\\DeleteMember.razor",
+              "ToolTip": "E:\\PRN221_ASM\\ASM3\\PRN222_Assignment3\\Asm03Solution\\Components\\Member\\DeleteMember.razor",
               "RelativeToolTip": "Asm03Solution\\Components\\Member\\DeleteMember.razor",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAAAH0AAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAYwIgAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-04T04:46:10.353Z",
               "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedHeight": 472,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             }
           ]
         }
