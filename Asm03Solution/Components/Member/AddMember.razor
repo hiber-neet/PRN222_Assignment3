@@ -100,29 +100,6 @@
     private List<string> errorMessages = new List<string>();
     private bool isAuthenticated = false;
 
-    protected override async Task OnInitializedAsync()
-    {
-        await CheckAuthentication();
-        if (!isAuthenticated)
-        {
-            NavigationManager.NavigateTo("/login");
-            return;
-        }
-    }
-
-    private async Task CheckAuthentication()
-    {
-        try
-        {
-            var userJson = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "currentUser");
-            isAuthenticated = !string.IsNullOrEmpty(userJson);
-        }
-        catch (Exception ex)
-        {
-            isAuthenticated = false;
-            errorMessages.Add($"Error checking authentication: {ex.Message}");
-        }
-    }
 
     private async Task HandleSubmit(EditContext editContext)
     {

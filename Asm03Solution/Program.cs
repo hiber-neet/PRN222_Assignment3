@@ -50,17 +50,23 @@ namespace Asm03Solution
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             //cau hinh di repo+service
             builder.Services.AddScoped<MemberRepository>();
-            builder.Services.AddScoped<MemberService>();
+            builder.Services.AddScoped<IMemberService, MemberService>();
+            builder.Services.AddScoped<MemberService>();           
             builder.Services.AddScoped<OrderRepository>();
             builder.Services.AddScoped<OrderService>();
             builder.Services.AddScoped<OrderDetailRepository>();
             builder.Services.AddScoped<OrderDetailService>();
             builder.Services.AddScoped<ProductRepository>();
             builder.Services.AddScoped<ProductService>();
+
+            builder.Services.AddScoped<CategoryRepository>();
+            builder.Services.AddScoped<CategoryService>();
+
             builder.Services.AddScoped<IMemberService, MemberService>();
             // Register Repositories and Unit of Work
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 
             //cau hinh session
             builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

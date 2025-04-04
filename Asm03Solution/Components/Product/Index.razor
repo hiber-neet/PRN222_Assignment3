@@ -1,11 +1,13 @@
 @page "/product"
 @rendermode InteractiveServer
 @using DataAccess.Models
-@using DataAccess.Repositories
+@using BusinessObject.Services
 @using Microsoft.AspNetCore.Components
-@inject IUnitOfWork UnitOfWork
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JSRuntime
+@inject ProductService ProductService
+@inject CategoryService CategoryService
+
 
 <PageTitle>Products</PageTitle>
 
@@ -77,13 +79,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        await CheckAuthentication();
-        // if (!isAuthenticated)
-        // {
-        //     NavigationManager.NavigateTo("/login");
-        //     return;
-        // }
-
         await LoadProducts();
     }
 
@@ -92,15 +87,17 @@
         loading = true;
         try
         {
-            if (UnitOfWork == null)
+            if (ProductService == null || CategoryService == null)
             {
-                errorMessage = "Database service unavailable.";
+                errorMessage = "Service unavailable.";
                 loading = false;
                 return;
             }
 
-            products = await UnitOfWork.Repository<Product>().GetAllAsync();
-            var categoriesDict = (await UnitOfWork.Repository<Category>().GetAllAsync())?.ToDictionary(c => c.CategoryId) ?? new Dictionary<int, Category>();
+
+            products =  ProductService.GetAllProductsAsync();
+            var categoriesDict = (await CategoryService.GetAllCategoriesAsync())?.ToDictionary(c => c.CategoryId) ?? new Dictionary<int, Category>();
+
 
             foreach (var product in products)
             {
@@ -112,26 +109,12 @@
         }
         catch (Exception ex)
         {
-            errorMessage = $"Error loading products: {ex.Message}";
+            errorMessage = $"Error loading product: {ex.Message}";
         }
         finally
         {
             loading = false;
             StateHasChanged();
-        }
-    }
-
-    private async Task CheckAuthentication()
-    {
-        try
-        {
-            var userJson = await JSRuntime.InvokeAsync<string>("localStorage.getItem", new object[] { "currentUser" });
-            isAuthenticated = !string.IsNullOrEmpty(userJson);
-        }
-        catch (Exception ex)
-        {
-            isAuthenticated = false;
-            errorMessage = $"Error checking authentication: {ex.Message}";
         }
     }
 
@@ -149,4 +132,5 @@
     {
         NavigationManager.NavigateTo($"/product/delete/{id}");
     }
+   
 }

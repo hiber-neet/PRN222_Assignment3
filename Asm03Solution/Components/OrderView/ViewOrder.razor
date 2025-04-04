@@ -1,0 +1,61 @@
+﻿@page "/OrderManagement"
+@using Microsoft.EntityFrameworkCore
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using DataAccess.Models
+@using DataAccess
+@using BusinessObject.Services
+@using System.Text.Json
+@inject OrderService orderService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+@rendermode InteractiveServer
+@if (Orders == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+
+    <table class="table" style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin: 20px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <thead>
+            <tr style="background-color: #343a40; color: white;">
+                <th style="padding: 12px 15px; text-align: left; border-bottom: 2px solid #dee2e6;">OrderDate</th>
+                <th style="padding: 12px 15px; text-align: left; border-bottom: 2px solid #dee2e6;">Product</th>
+                <th style="padding: 12px 15px; text-align: left; border-bottom: 2px solid #dee2e6;">Unit Price</th>
+                <th style="padding: 12px 15px; text-align: left; border-bottom: 2px solid #dee2e6;">Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Orders)
+            {
+                <tr style="border-bottom: 1px solid #dddddd;">
+                    <td style="padding: 12px 15px;">@order.OrderDate</td>
+                    <td style="padding: 12px 15px;">
+                        @foreach (var orderDetail in order.OrderDetails)
+                        {
+                            @orderDetail.Product.ProductName
+                        }
+                    </td>
+                    <td style="padding: 12px 15px;">
+                    @foreach(var orderDetail in order.OrderDetails){
+                        @orderDetail.UnitPrice
+                    }
+                    </td>
+                    <td style="padding: 12px 15px;">
+                        @foreach (var orderDetail in order.OrderDetails)
+                        {
+                            @orderDetail.Quantity
+                        }
+                    </td>                 
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code{
+    private List<Order> Orders { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        Orders = await orderService.GetAllOrders();
+    }
+}

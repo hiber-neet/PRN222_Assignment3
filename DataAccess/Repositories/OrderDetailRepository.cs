@@ -32,6 +32,14 @@ namespace DataAccess.Repositories
                 .Where(od => od.OrderId == orderId)
                 .ToListAsync();
         }
-
+        public async Task DeleteOrderDetailByIdProduct(int idProduct)
+        {
+            IQueryable<OrderDetail> orderDetails = _context.OrderDetails.Where(x => x.ProductId == idProduct);
+            if (orderDetails != null)
+            {
+                _context.RemoveRange(orderDetails);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }

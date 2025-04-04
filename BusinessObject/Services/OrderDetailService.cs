@@ -21,6 +21,9 @@ namespace BusinessObject.Services
         {
             return await _orderDetailRepository.GetOrderDetailsByOrderId(orderId);
         }
-
+        public async Task DeleteOrderDetailByIdProduct(int id)
+        {
+            await _orderDetailRepository.DeleteOrderDetailByIdProduct(id);
+        }
     }
 }

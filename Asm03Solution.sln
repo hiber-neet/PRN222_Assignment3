@@ -32,10 +32,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-<<<<<<< HEAD
-		SolutionGuid = {20187B1C-4F1D-4C34-BBE6-B5C5E92D5A49}
-=======
 		SolutionGuid = {4F4F1D5A-BC5D-4399-A3F0-897203CE07C5}
->>>>>>> origin/search-report-filter
 	EndGlobalSection
 EndGlobal

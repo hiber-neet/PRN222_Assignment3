@@ -1,4 +1,4 @@
-using BusinessObject.Services.Instance;
+﻿using BusinessObject.Services.Instance;
 using DataAccess.Models;
 using DataAccess.Repositories;
 using System;
@@ -34,14 +34,12 @@ namespace BusinessObject.Services
 
         public async Task<bool> UpdateMemberProfile(Member user)
         {
-            // Lấy entity từ database trước
+
             var existingUser = await _memberRepository.GetByIdAsync(user.MemberId);
             if (existingUser == null)
             {
                 throw new Exception("User not found");
             }
-
-            // Cập nhật giá trị mới từ user
             existingUser.City = user.City;
             existingUser.CompanyName = user.CompanyName;
             existingUser.Country = user.Country;
@@ -50,7 +48,7 @@ namespace BusinessObject.Services
             return result > 0;
         }
 
-        // Các phương thức cần thiết để implement interface IMemberService
+
         public async Task<IEnumerable<Member>> GetAllMembersAsync()
         {
             return await GetAllUser();

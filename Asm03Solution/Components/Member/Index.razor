@@ -96,7 +96,6 @@
     private IEnumerable<Member> members;
     private IEnumerable<Member> pagedMembers;
     private bool loading = true;
-    private bool isAuthenticated = false;
     private string errorMessage;
     
     // Phân trang
@@ -105,14 +104,7 @@
     private int totalPages => members == null ? 0 : (int)Math.Ceiling(members.Count() / (double)pageSize);
 
     protected override async Task OnInitializedAsync()
-    {
-        await CheckAuthentication();
-        if (!isAuthenticated)
-        {
-            NavigationManager.NavigateTo("/login");
-            return;
-        }
-
+    {    
         await LoadMembers();
     }
 

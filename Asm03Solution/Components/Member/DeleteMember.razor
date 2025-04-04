@@ -1,10 +1,12 @@
 @page "/member/delete/{id:int}"
 @rendermode InteractiveServer
 @using DataAccess.Models
+@using BusinessObject.Services
 @using BusinessObject.Services.Instance
 @using Microsoft.AspNetCore.Components
 @inject IMemberService MemberService
 @inject NavigationManager NavigationManager
+@inject OrderService OrderService
 @inject IJSRuntime JSRuntime
 
 <PageTitle>Delete Member</PageTitle>
@@ -79,14 +81,7 @@
     private bool processingDelete = false;
 
     protected override async Task OnInitializedAsync()
-    {
-        await CheckAuthentication();
-        if (!isAuthenticated)
-        {
-            NavigationManager.NavigateTo("/login");
-            return;
-        }
-
+    {       
         await LoadMember();
         loading = false;
     }
@@ -107,43 +102,13 @@
         }
     }
 
-    private async Task CheckAuthentication()
-    {
-        try
-        {
-            var userJson = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "currentUser");
-            isAuthenticated = !string.IsNullOrEmpty(userJson);
-            
-            // Check if this is the currently logged in user
-            if (isAuthenticated)
-            {
-                try
-                {
-                    var currentUser = System.Text.Json.JsonSerializer.Deserialize<Member>(userJson);
-                    if (currentUser != null && currentUser.MemberId == Id)
-                    {
-                        errorMessages.Add("You cannot delete your own account while logged in.");
-                    }
-                }
-                catch 
-                {
-                    // Ignore deserialization errors
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            isAuthenticated = false;
-            errorMessages.Add($"Error checking authentication: {ex.Message}");
-        }
-    }
 
     private async Task ConfirmDelete()
     {
         if (processingDelete) return;
-        
+
         processingDelete = true;
-        
+
         try
         {
             // Check if member has associated orders
@@ -154,7 +119,7 @@
                 processingDelete = false;
                 return;
             }
-            
+            await OrderService.DeleteOrderByMemberId(Id);
             await MemberService.DeleteMemberAsync(Id);
             NavigationManager.NavigateTo("/member");
         }

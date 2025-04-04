@@ -60,7 +60,7 @@
 		{
 			Console.WriteLine("Login success Admin");
 			HttpContext?.Session.SetString("Email", "admin@estore.com");
-			NavigationManager.NavigateTo("/product");
+			NavigationManager.NavigateTo("/member");
 			return;
 		}
 

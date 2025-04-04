@@ -71,7 +71,17 @@ else
     }
     protected override void OnInitialized()
     {
-     
+        var email = HttpContextAccessor.HttpContext?.Session.GetString("Email");
+
+        if (string.IsNullOrEmpty(email))
+        {
+            try{
+                NavigationManager.NavigateTo("/Login");
+                return;
+            }catch(Exception ex){
+                Console.WriteLine("Error bro:" + ex.Message);
+            }
+        }
         Products = productService.GetAllProductsAsync();
     }
 
