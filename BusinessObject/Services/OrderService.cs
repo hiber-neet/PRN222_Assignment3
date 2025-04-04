@@ -24,7 +24,10 @@ namespace BusinessObject.Services
             _memberService = memberService;
            
         }
-
+        public async Task<List<Order>> GetAllOrders()
+        {
+            return await _orderRepository.GetAllOrder();
+        }
         public async Task CreateOrderAsync(Product product, int quantity, string email)
         {
             Order order = new();

@@ -35,7 +35,7 @@ namespace DataAccess.Repositories
         }
         public async Task<List<Order>> GetAllOrder()
         {
-            return await _context.Orders.ToListAsync();
+            return await _context.Orders.Include(x => x.OrderDetails).ThenInclude(x => x.Product).ToListAsync();
         }
 
 
