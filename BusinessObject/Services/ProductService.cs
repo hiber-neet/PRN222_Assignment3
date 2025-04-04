@@ -12,7 +12,7 @@ namespace BusinessObject.Services
     public class ProductService
     {
         private readonly ProductRepository _productRepository;
-
+        private OrderDetailService _orderDetailService;
         public ProductService(ProductRepository productRepository)
         {
             _productRepository = productRepository;
@@ -44,6 +44,7 @@ namespace BusinessObject.Services
         }
         public async Task DeleteProductAsync(int id)
         {
+            
             await _productRepository.DeleteProductAsync(id);
         }
         public async Task UpdateProductAsync(Product product)

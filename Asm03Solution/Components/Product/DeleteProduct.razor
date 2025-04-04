@@ -5,6 +5,7 @@
 @using Microsoft.AspNetCore.Components
 @inject ProductService ProductService
 @inject NavigationManager NavigationManager
+@inject OrderDetailService OrderDetailService
 
 <PageTitle>Delete Product</PageTitle>
 
@@ -102,7 +103,7 @@
         {
             if (product != null)
             {
-
+                await OrderDetailService.DeleteOrderDetailByIdProduct(Id);
                 await ProductService.DeleteProductAsync(Id);
 
                 NavigationManager.NavigateTo("/product");

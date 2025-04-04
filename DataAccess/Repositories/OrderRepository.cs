@@ -38,7 +38,12 @@ namespace DataAccess.Repositories
             return await _context.Orders.Include(x => x.OrderDetails).ThenInclude(x => x.Product).ToListAsync();
         }
 
-
+        public async Task DeleteOrderByMemberId(int id)
+        {
+           IQueryable<Order> orders = _context.Orders.Where(x => x.MemberId == id);
+            _context.Orders.RemoveRange(orders);
+            await _context.SaveChangesAsync();
+        }
         public async Task<List<Order>> GetOrdersByMemberId(int memberId)
         {
             return await _context.Orders

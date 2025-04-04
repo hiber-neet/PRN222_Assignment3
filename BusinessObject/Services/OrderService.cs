@@ -13,20 +13,24 @@ namespace BusinessObject.Services
     public class OrderService
     {
         private readonly OrderRepository _orderRepository;
-
+        private readonly ProductService _productService;
         private readonly OrderDetailRepository _orderDetailRepository;
         private readonly MemberService _memberService;
         public OrderService(OrderRepository orderRepository, OrderDetailRepository orderDetailRepository,
-            MemberService memberService)
+            MemberService memberService, ProductService productService)
         {
             _orderRepository = orderRepository;
             _orderDetailRepository = orderDetailRepository;
             _memberService = memberService;
-           
+            _productService = productService;
         }
         public async Task<List<Order>> GetAllOrders()
         {
             return await _orderRepository.GetAllOrder();
+        }
+        public async Task DeleteOrderByMemberId(int id)
+        {
+            await _orderRepository.DeleteOrderByMemberId(id);
         }
         public async Task CreateOrderAsync(Product product, int quantity, string email)
         {

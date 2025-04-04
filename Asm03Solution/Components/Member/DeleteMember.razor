@@ -1,10 +1,12 @@
 @page "/member/delete/{id:int}"
 @rendermode InteractiveServer
 @using DataAccess.Models
+@using BusinessObject.Services
 @using BusinessObject.Services.Instance
 @using Microsoft.AspNetCore.Components
 @inject IMemberService MemberService
 @inject NavigationManager NavigationManager
+@inject OrderService OrderService
 @inject IJSRuntime JSRuntime
 
 <PageTitle>Delete Member</PageTitle>
@@ -104,9 +106,9 @@
     private async Task ConfirmDelete()
     {
         if (processingDelete) return;
-        
+
         processingDelete = true;
-        
+
         try
         {
             // Check if member has associated orders
@@ -117,7 +119,7 @@
                 processingDelete = false;
                 return;
             }
-            
+            await OrderService.DeleteOrderByMemberId(Id);
             await MemberService.DeleteMemberAsync(Id);
             NavigationManager.NavigateTo("/member");
         }
