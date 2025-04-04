@@ -34,14 +34,12 @@ namespace BusinessObject.Services
 
         public async Task<bool> UpdateMemberProfile(Member user)
         {
-           
+
             var existingUser = await _memberRepository.GetByIdAsync(user.MemberId);
             if (existingUser == null)
             {
                 throw new Exception("User not found");
             }
-
-          
             existingUser.City = user.City;
             existingUser.CompanyName = user.CompanyName;
             existingUser.Country = user.Country;
@@ -50,7 +48,7 @@ namespace BusinessObject.Services
             return result > 0;
         }
 
-      
+
         public async Task<IEnumerable<Member>> GetAllMembersAsync()
         {
             return await GetAllUser();

@@ -128,6 +128,10 @@ namespace DataAccess.Repositories
             return await _context.SaveChangesAsync();
         }
 
-
+        public void Remove(T entity)
+        {
+            _context.Set<T>().Remove(entity);
+            _context.SaveChanges();
+        }
     }
 }
